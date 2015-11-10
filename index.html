@@ -193,26 +193,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>在项目中有的时候会需要将UIWebView的背景颜色改为透明色，但是直接设置UIWebView的backgroundColor属性是无效的，因为我们看见的为网页中的背景颜色，所以我们需要使用改变加载的html代码的方式进行设置，方法如下：</strong></p>
-<pre><code>NSString *jsString = [NSString stringWithFormat:@"<span class="tag">&lt;<span class="title">html</span>&gt;</span> \n"
-                      "<span class="tag">&lt;<span class="title">head</span>&gt;</span> \n"
-                      "<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">\"viewport\"</span> <span class="attribute">content</span>=<span class="value">\"width=device-width\"</span>&gt;</span>"
-                      "<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">\"Content-Type\"</span> <span class="attribute">content</span>=<span class="value">\"text</span>/<span class="attribute">html</span>; <span class="attribute">charset</span>=<span class="value">utf-8\"</span>&gt;</span>"
-                      "<span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">\"text</span>/<span class="attribute">css</span>\"&gt;</span><span class="css"> \<span class="tag">n</span>"
-                      "<span class="tag">body</span> <span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">10.5</span></span></span>; <span class="rule"><span class="attribute">text-align</span>:<span class="value">justify</span></span>; <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1.5</span></span></span>; <span class="rule"><span class="attribute">font-family</span>:<span class="value"> Heiti SC</span></span>; <span class="rule"><span class="attribute">background-color</span>:<span class="value">transparent</span></span></span>}\<span class="tag">n</span>"
-                      "<span class="tag">a</span> <span class="rules">{<span class="rule"><span class="attribute">text-decoration</span>:<span class="value">none</span></span>; <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#145b7d</span></span></span></span>}"
-                      "</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span> \n"
-                      "<span class="tag">&lt;/<span class="title">head</span>&gt;</span> \n"
-                      "<span class="tag">&lt;<span class="title">body</span>&gt;</span>%@<span class="tag">&lt;/<span class="title">body</span>&gt;</span> \n"
-                      "<span class="tag">&lt;/<span class="title">html</span>&gt;</span>", handel];
-</code></pre><p><strong>其中handel为拼接到html语句作为body内容的字符串，这里面的实现方式用到的是css样式中background-color:transparent设置为透明，注意还要将UIWebView的设置为透明色：</strong></p>
-<pre><code><span class="built_in">UIWebView</span> *webView = [[<span class="built_in">UIWebView</span> alloc] initWithFrame:<span class="keyword">self</span><span class="variable">.view</span><span class="variable">.bounds</span>];
-webView<span class="variable">.delegate</span> = <span class="keyword">self</span>;
-[<span class="keyword">self</span><span class="variable">.view</span> addSubview:webView];
-
-[webView setBackgroundColor:[<span class="built_in">UIColor</span> clearColor]]; <span class="comment">// 必须设置背景色</span>
-[webView loadHTMLString:jsString baseURL:<span class="literal">nil</span>];
-</code></pre>
+        <p><strong>在项目中有的时候会需要将UIWebView的背景颜色改为透明色，但是直接设置UIWebView的backgroundColor属性是无效的，因为我们看见的为网页中的背景颜色，所以我们需要使用改变加载的html代码的方式进行设置，方法如下：</strong><br>
       
     </div>
     
@@ -225,6 +206,10 @@ webView<span class="variable">.delegate</span> = <span class="keyword">self</spa
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/11/10/UIWebview修改背景色为透明的方法/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
