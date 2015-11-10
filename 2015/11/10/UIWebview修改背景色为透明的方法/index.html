@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://JinXinLiang.github.io/2015/11/10/UIWebview修改背景色为透明的方法/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="在项目中有的时候会需要将UIWebView的背景颜色改为透明色，但是直接设置UIWebView的backgroundColor属性是无效的，因为我们看见的为网页中的背景颜色，所以我们需要使用改变加载的html代码的方式进行设置，方法如下：">
-<meta property="og:updated_time" content="2015-11-10T12:58:41.000Z">
+<meta property="og:updated_time" content="2015-11-10T13:00:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIWebview修改背景色为透明的方法">
 <meta name="twitter:description" content="在项目中有的时候会需要将UIWebView的背景颜色改为透明色，但是直接设置UIWebView的backgroundColor属性是无效的，因为我们看见的为网页中的背景颜色，所以我们需要使用改变加载的html代码的方式进行设置，方法如下：">
@@ -203,7 +203,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>在项目中有的时候会需要将UIWebView的背景颜色改为透明色，但是直接设置UIWebView的backgroundColor属性是无效的，因为我们看见的为网页中的背景颜色，所以我们需要使用改变加载的html代码的方式进行设置，方法如下：</strong><br><a id="more"></a></p>
+        <p>在项目中有的时候会需要将UIWebView的背景颜色改为透明色，但是直接设置UIWebView的backgroundColor属性是无效的，因为我们看见的为网页中的背景颜色，所以我们需要使用改变加载的html代码的方式进行设置，方法如下：<br><a id="more"></a></p>
 <pre><code>NSString *jsString = [NSString stringWithFormat:@"<span class="tag">&lt;<span class="title">html</span>&gt;</span> \n"
                       "<span class="tag">&lt;<span class="title">head</span>&gt;</span> \n"
                       "<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">\"viewport\"</span> <span class="attribute">content</span>=<span class="value">\"width=device-width\"</span>&gt;</span>"
@@ -215,7 +215,7 @@
                       "<span class="tag">&lt;/<span class="title">head</span>&gt;</span> \n"
                       "<span class="tag">&lt;<span class="title">body</span>&gt;</span>%@<span class="tag">&lt;/<span class="title">body</span>&gt;</span> \n"
                       "<span class="tag">&lt;/<span class="title">html</span>&gt;</span>", handel];
-</code></pre><p><strong>其中handel为拼接到html语句作为body内容的字符串，这里面的实现方式用到的是css样式中background-color:transparent设置为透明，注意还要将UIWebView的设置为透明色：</strong></p>
+</code></pre><p>其中handel为拼接到html语句作为body内容的字符串，这里面的实现方式用到的是css样式中background-color:transparent设置为透明，注意还要将UIWebView的设置为透明色：</p>
 <pre><code><span class="built_in">UIWebView</span> *webView = [[<span class="built_in">UIWebView</span> alloc] initWithFrame:<span class="keyword">self</span><span class="variable">.view</span><span class="variable">.bounds</span>];
 webView<span class="variable">.delegate</span> = <span class="keyword">self</span>;
 [<span class="keyword">self</span><span class="variable">.view</span> addSubview:webView];
