@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Eiwodetianna</title>
+  <title>UIWebview修改背景色为透明的方法 | Eiwodetianna</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C&apos;est la vie.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Eiwodetianna">
-<meta property="og:url" content="http://JinXinLiang.github.io/index.html">
+  <meta name="description" content="在项目中有的时候会需要将UIWebView的背景颜色改为透明色，但是直接设置UIWebView的backgroundColor属性是无效的，因为我们看见的为网页中的背景颜色，所以我们需要使用改变加载的html代码的方式进行设置，方法如下：
+NSString *jsString = [NSString stringWithFormat:@&quot;&amp;lt;html&amp;gt; \n&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UIWebview修改背景色为透明的方法">
+<meta property="og:url" content="http://JinXinLiang.github.io/2015/11/10/UIWebview修改背景色为透明的方法/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
-<meta property="og:description" content="C&apos;est la vie.">
+<meta property="og:description" content="在项目中有的时候会需要将UIWebView的背景颜色改为透明色，但是直接设置UIWebView的backgroundColor属性是无效的，因为我们看见的为网页中的背景颜色，所以我们需要使用改变加载的html代码的方式进行设置，方法如下：
+NSString *jsString = [NSString stringWithFormat:@&quot;&amp;lt;html&amp;gt; \n&quot;">
+<meta property="og:updated_time" content="2015-11-10T12:54:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eiwodetianna">
-<meta name="twitter:description" content="C&apos;est la vie.">
+<meta name="twitter:title" content="UIWebview修改背景色为透明的方法">
+<meta name="twitter:description" content="在项目中有的时候会需要将UIWebView的背景颜色改为透明色，但是直接设置UIWebView的backgroundColor属性是无效的，因为我们看见的为网页中的背景颜色，所以我们需要使用改变加载的html代码的方式进行设置，方法如下：
+NSString *jsString = [NSString stringWithFormat:@&quot;&amp;lt;html&amp;gt; \n&quot;">
   
     <link rel="alternative" href="/atom.xml" title="Eiwodetianna" type="application/atom+xml">
   
@@ -165,9 +169,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-UIWebview修改背景色为透明的方法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-UIWebview修改背景色为透明的方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/11/10/UIWebview修改背景色为透明的方法/" class="article-date">
@@ -183,12 +185,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/10/UIWebview修改背景色为透明的方法/">UIWebview修改背景色为透明的方法</a>
+    <h1 class="article-title" itemprop="name">
+      UIWebview修改背景色为透明的方法
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-UIWebView/">-iOS -UIWebView</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -216,89 +229,62 @@ webView<span class="variable">.delegate</span> = <span class="keyword">self</spa
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-UIWebView/">-iOS -UIWebView</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/11/10/Xcode代码显示无法自动换行问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Xcode 代码显示无法自动换行问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-  
-    <article id="post-Xcode代码显示无法自动换行问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/10/Xcode代码显示无法自动换行问题/" class="article-date">
-  	<time datetime="2015-11-10T02:55:00.000Z" itemprop="datePublished">2015-11-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/10/Xcode代码显示无法自动换行问题/">Xcode 代码显示无法自动换行问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在给学生解决问题中，碰到了写代码时代码不会自动换行的问题，代码很长，阅读起来特别麻烦。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/11/10/Xcode代码显示无法自动换行问题/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="UIWebview修改背景色为透明的方法" data-title="UIWebview修改背景色为透明的方法" data-url="http://JinXinLiang.github.io/2015/11/10/UIWebview修改背景色为透明的方法/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"Eiwodetianna"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -322,8 +308,8 @@ webView<span class="variable">.delegate</span> = <span class="keyword">self</spa
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
