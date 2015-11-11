@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://JinXinLiang.github.io/2015/11/11/耳机状态监控/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="当你的应用程序运行时，用户可以插入或拔出耳机，在写音频类APP的时候，常常会有对耳机状态监控的需求，方法如下：">
-<meta property="og:updated_time" content="2015-11-11T16:12:44.000Z">
+<meta property="og:updated_time" content="2015-11-11T16:19:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发 - 耳机状态监控">
 <meta name="twitter:description" content="当你的应用程序运行时，用户可以插入或拔出耳机，在写音频类APP的时候，常常会有对耳机状态监控的需求，方法如下：">
@@ -225,8 +225,8 @@
     AVAudioSessionRouteChangeReasonKey = 8;
 <span class="special">}</span>
 </code></pre><p>6:该AVAudioSessionRouteChangeNotification提供了两个重要的对象：</p>
-<pre><code><span class="number">1.</span>AVAudioSessionRouteDescription：前一线路的描述。
-<span class="number">2.</span>AVAudioSessionRouteChangeReasonKey：路线改变的原因。
+<pre><code><span class="comment">// AVAudioSessionRouteDescription：前一线路的描述。</span>
+<span class="comment">// AVAudioSessionRouteChangeReasonKey：路线改变的原因。</span>
 </code></pre><p>7:如果你只是想知道，当耳机被拔掉，你应该使用下面的代码：</p>
 <pre><code><span class="built_in">NSInteger</span> routeChangeReason =  [notification<span class="variable">.userInfo</span> [<span class="built_in">AVAudioSessionRouteChangeReasonKey</span>] integerValue]; 
 <span class="keyword">if</span>  (routeChangeReason ==  <span class="built_in">AVAudioSessionRouteChangeReasonOldDeviceUnavailable</span>) { 
