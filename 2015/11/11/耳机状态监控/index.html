@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://JinXinLiang.github.io/2015/11/11/耳机状态监控/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="当你的应用程序运行时，用户可以插入或拔出耳机，在写音频类APP的时候，常常会有对耳机状态监控的需求，方法如下：">
-<meta property="og:updated_time" content="2015-11-11T16:20:33.000Z">
+<meta property="og:updated_time" content="2015-11-11T16:22:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发 - 耳机状态监控">
 <meta name="twitter:description" content="当你的应用程序运行时，用户可以插入或拔出耳机，在写音频类APP的时候，常常会有对耳机状态监控的需求，方法如下：">
@@ -212,9 +212,9 @@
 </code></pre><p>2.在该文件下存在监听事件名称，我们可以对该事件进行监听：</p>
 <pre><code><span class="built_in">NSString</span> *<span class="keyword">const</span> <span class="built_in">AVAudioSessionRouteChangeNotification</span> 
 </code></pre><p>3.使用通知中心设置监听：</p>
-<pre><code><span class="attr_selector">[[NSNotificationCenter defaultCenter]</span> <span class="tag">addObserver</span><span class="pseudo">:self</span> <span class="tag">selector</span>:@<span class="tag">selector</span>(<span class="attribute">outputDeviceSourceChanged</span>:) <span class="tag">name</span><span class="pseudo">:AVAudioSessionRouteChangeNotification</span> <span class="tag">object</span>:<span class="attr_selector">[AVAudioSession sharedInstance]</span>];
+<pre><code><span class="attr_selector">[[NSNotificationCenter defaultCenter]</span> <span class="tag">addObserver</span><span class="pseudo">:self</span> <span class="tag">selector</span>:@<span class="tag">selector</span>(<span class="attribute">outputRouteChanged</span>:) <span class="tag">name</span><span class="pseudo">:AVAudioSessionRouteChangeNotification</span> <span class="tag">object</span>:<span class="attr_selector">[AVAudioSession sharedInstance]</span>];
 </code></pre><p>4.实现监听触发事件：</p>
-<pre><code><span class="pp">- <span class="params">(void)</span>outputDeviceSourceChanged:<span class="params">(<span class="variable">NSNotification</span> *)</span>notification {
+<pre><code><span class="pp">- <span class="params">(void)</span>outputRouteChanged:<span class="params">(<span class="variable">NSNotification</span> *)</span>notification {
 
     NSLog<span class="params">(@<span class="string">"---%@"</span>, notification.user<span class="variable">Info</span>)</span>;
 
