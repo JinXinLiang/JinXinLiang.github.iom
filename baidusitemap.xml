@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://JinXinLiang.github.io/2015/11/16/iOS%E5%BC%80%E5%8F%91-DrawRect-%E4%B8%80-%E7%BA%BF%E6%AE%B5/</loc>
+    <lastmod>2015-11-27T07:50:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS开发-Quartz 2D(一)</title>
+        <pubTime>2015-11-16T06:42:54.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>绘图</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://JinXinLiang.github.io/2015/11/11/Mac%E6%A8%A1%E6%8B%9F%E6%85%A2%E9%80%9F%E7%BD%91%E7%BB%9C-Network-Link-Conditioner/</loc>
+    <lastmod>2015-11-11T17:09:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac模拟慢速网络 - Network Link Conditioner</title>
+        <pubTime>2015-11-11T13:44:30.000Z</pubTime>
+        
+        <tag>Mac</tag>
+         
+        <tag>iOS</tag>
+         
+        <tag>网络</tag>
+         
+        <tag>调试技巧</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://JinXinLiang.github.io/2015/11/11/%E8%80%B3%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%8E%A7/</loc>
+    <lastmod>2015-11-11T16:56:28.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS开发 - 耳机状态监控</title>
+        <pubTime>2015-11-11T09:33:32.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>音频</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://JinXinLiang.github.io/2015/11/10/Xcode%E4%BB%A3%E7%A0%81%E6%98%BE%E7%A4%BA%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2015-11-11T16:41:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>Xcode 代码显示无法自动换行问题</title>
+        <pubTime>2015-11-10T02:55:00.000Z</pubTime>
+        
+        <tag>Xcode</tag>
+         
+        <tag>iOS</tag>
+         
+        <tag>iOS问题集</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://JinXinLiang.github.io/2015/11/10/UIWebview%E4%BF%AE%E6%94%B9%E8%83%8C%E6%99%AF%E8%89%B2%E4%B8%BA%E9%80%8F%E6%98%8E%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2015-11-11T16:10:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS开发 - UIWebView修改背景色为透明的方法</title>
+        <pubTime>2015-11-10T11:58:05.000Z</pubTime>
+        
+        <tag>UIWebView</tag>
+         
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+</urlset>
