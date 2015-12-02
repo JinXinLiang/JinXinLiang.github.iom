@@ -120,7 +120,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/UIWebView/" style="font-size: 10px;">UIWebView</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iOS问题集/" style="font-size: 10px;">iOS问题集</a> <a href="/tags/绘图/" style="font-size: 10px;">绘图</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/调试技巧/" style="font-size: 10px;">调试技巧</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a>
+						<a href="/tags/APP-Store/" style="font-size: 10px;">APP Store</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/UIWebView/" style="font-size: 10px;">UIWebView</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iOS问题集/" style="font-size: 10px;">iOS问题集</a> <a href="/tags/绘图/" style="font-size: 10px;">绘图</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/调试技巧/" style="font-size: 10px;">调试技巧</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a>
 					</div>
 				</section>
 				
@@ -184,10 +184,126 @@ var _hmt = _hmt || [];
 </nav>
       <div class="body-wrap">
   
-    <article id="post-iOS开发-DrawRect-一-线段" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-iOS开发-APP迁移指南-APP-transfer" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/16/iOS开发-DrawRect-一-线段/" class="article-date">
+      <a href="/2015/12/02/iOS开发-APP迁移指南-APP-transfer/" class="article-date">
+  	<time datetime="2015-12-02T03:03:23.000Z" itemprop="datePublished">2015-12-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/02/iOS开发-APP迁移指南-APP-transfer/">iOS开发-App迁移指南(App transfer)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>App迁移(App transfer)</strong>：将App从一个开发者账号迁移至另一个开发者账号。此文演示了整个迁移过程，为了方便解释，在此过程中，将App转出的开发者账号我们下文将会称之为A账号，接收App的开发者账号我们下文将会称之为B账号。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APP-Store/">APP Store</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/02/iOS开发-APP迁移指南-APP-transfer/#more">More >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-iOS开发-Socket通信" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/30/iOS开发-Socket通信/" class="article-date">
+  	<time datetime="2015-11-30T02:18:30.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/30/iOS开发-Socket通信/">iOS开发-Socket通信</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-进程间的通信">一.进程间的通信</h2><p>两个应用程序之间的通信，我们可以理解为进程之间的通信，而进程之间进行通信的前提是我们能够找到某个进程，因此，我们需要给进程添加唯一的标示，在本地进程通信中我们可以使用PID来标示一个进程，但PID只在本地唯一，网络中的多个计算机之间的进程标示并不能保证唯一性，冲突的几率很大，这时候我们需要另辟蹊径，TCP/IP协议族已为我们解决了这个问题，IP层的ip地址可以标示主机，而TCP层协议和端口号可以标示某个主机的某个进程，于是我们采取“ip地址＋协议＋端口号”作为唯一标示的这种形式，来确定网络中的一个进程，从而进行进程之间的通讯，这种方式就是我们Socket使用的通讯方式。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Socket/">Socket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/11/30/iOS开发-Socket通信/#more">More >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-iOS开发-Quartz 2D(一)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/16/iOS开发-Quartz 2D(一)/" class="article-date">
   	<time datetime="2015-11-16T06:42:54.000Z" itemprop="datePublished">2015-11-16</time>
 </a>
     </div>
@@ -201,7 +317,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/16/iOS开发-DrawRect-一-线段/">iOS开发-Quartz 2D(一)</a>
+      <a class="article-title" href="/2015/11/16/iOS开发-Quartz 2D(一)/">iOS开发-Quartz 2D(一)</a>
     </h1>
   
 
@@ -210,8 +326,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。在需要的时候，Quartz 2D还可以借助图形硬件的功能。</p>
-<h2 id="<!-more->">
+        <p>Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。在需要的时候，Quartz 2D还可以借助图形硬件的功能。<br>
       
     </div>
     
@@ -226,7 +341,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a  href="/2015/11/16/iOS开发-DrawRect-一-线段/#more">More >></a>
+          <a  href="/2015/11/16/iOS开发-Quartz 2D(一)/#more">More >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -484,7 +599,12 @@ var _hmt = _hmt || [];
     		&copy; 2015 Eiwodetianna.
     	</div>
       		<div class="footer-right">
+          <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
       			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+            <font id="counter">
+    本站共到访 <font id="counterValue" style="color:white">?</font> 次
+</font>
       		</div>
     	</div>
   </div>

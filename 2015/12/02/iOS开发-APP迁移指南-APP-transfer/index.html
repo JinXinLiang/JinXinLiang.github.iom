@@ -4,24 +4,33 @@
   <meta name="baidu-site-verification" content="iNxYuXXbRQ" />
   <meta charset="utf-8">
   
-  <title>Mac模拟慢速网络 - Network Link Conditioner | Eiwodetianna</title>
+  <title>iOS开发-App迁移指南(App transfer) | Eiwodetianna</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网络环境的好坏，有时会让你的产品带给用户完全不同的体验，作为开发者，在开发项目过程中，我们需要进行对于网络环境的调试。Mac环境下模拟慢速网络可以使用苹果官方提供的工具：Network Link Conditioner。">
+  <meta name="description" content="App迁移(App transfer)：将App从一个开发者账号迁移至另一个开发者账号。此文演示了整个迁移过程，为了方便解释，在此过程中，将App转出的开发者账号我们下文将会称之为A账号，接收App的开发者账号我们下文将会称之为B账号。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac模拟慢速网络 - Network Link Conditioner">
-<meta property="og:url" content="http://JinXinLiang.github.io/2015/11/11/Mac模拟慢速网络-Network-Link-Conditioner/index.html">
+<meta property="og:title" content="iOS开发-App迁移指南(App transfer)">
+<meta property="og:url" content="http://JinXinLiang.github.io/2015/12/02/iOS开发-APP迁移指南-APP-transfer/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
-<meta property="og:description" content="网络环境的好坏，有时会让你的产品带给用户完全不同的体验，作为开发者，在开发项目过程中，我们需要进行对于网络环境的调试。Mac环境下模拟慢速网络可以使用苹果官方提供的工具：Network Link Conditioner。">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxdx3pc10j21ju0q0n3g.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxdze34n4j216s0o2gog.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxe6o7eatj210s0wytdy.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxebf4ml5j212c14c127.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxejbtk24j211i0k4gq9.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4gw1exxfhtqcajj210m0l478v.jpg">
-<meta property="og:updated_time" content="2015-11-11T17:09:18.000Z">
+<meta property="og:description" content="App迁移(App transfer)：将App从一个开发者账号迁移至另一个开发者账号。此文演示了整个迁移过程，为了方便解释，在此过程中，将App转出的开发者账号我们下文将会称之为A账号，接收App的开发者账号我们下文将会称之为B账号。">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1eyl5i9nqhvj20de078q3a.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1eyl8vhtj6bj20de086q3b.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1eyl925k8mjj20dd084wex.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eyl95whh3xj20de04xjrq.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1eyl99y95bgj20de07kdfy.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1eyl9dxtptbj20de07h0t3.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1eyl9jzq97vj20de08raao.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1eyl9mrm1qtj20de07575f.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eyl9ujmxcaj20de054mxa.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eyl9y6r58nj20de02uaa4.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1eyla32jvbsj20de05cwer.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eyla8ukzo6j20de02naa4.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1eylam54kc5j20de061mx6.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1eylajwhrv0j20dd071q3z.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eylap9u829j20dd05qmx7.jpg">
+<meta property="og:updated_time" content="2015-12-02T06:37:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac模拟慢速网络 - Network Link Conditioner">
-<meta name="twitter:description" content="网络环境的好坏，有时会让你的产品带给用户完全不同的体验，作为开发者，在开发项目过程中，我们需要进行对于网络环境的调试。Mac环境下模拟慢速网络可以使用苹果官方提供的工具：Network Link Conditioner。">
+<meta name="twitter:title" content="iOS开发-App迁移指南(App transfer)">
+<meta name="twitter:description" content="App迁移(App transfer)：将App从一个开发者账号迁移至另一个开发者账号。此文演示了整个迁移过程，为了方便解释，在此过程中，将App转出的开发者账号我们下文将会称之为A账号，接收App的开发者账号我们下文将会称之为B账号。">
   
     <link rel="alternative" href="/atom.xml" title="Eiwodetianna" type="application/atom+xml">
   
@@ -189,11 +198,11 @@ var _hmt = _hmt || [];
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-Mac模拟慢速网络-Network-Link-Conditioner" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-iOS开发-APP迁移指南-APP-transfer" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/11/Mac模拟慢速网络-Network-Link-Conditioner/" class="article-date">
-  	<time datetime="2015-11-11T13:44:30.000Z" itemprop="datePublished">2015-11-11</time>
+      <a href="/2015/12/02/iOS开发-APP迁移指南-APP-transfer/" class="article-date">
+  	<time datetime="2015-12-02T03:03:23.000Z" itemprop="datePublished">2015-12-02</time>
 </a>
     </div>
   
@@ -206,7 +215,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      Mac模拟慢速网络 - Network Link Conditioner
+      iOS开发-App迁移指南(App transfer)
     </h1>
   
 
@@ -215,7 +224,7 @@ var _hmt = _hmt || [];
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/调试技巧/">调试技巧</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APP-Store/">APP Store</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 	</div>
 
         
@@ -226,21 +235,47 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>网络环境的好坏，有时会让你的产品带给用户完全不同的体验，作为开发者，在开发项目过程中，我们需要进行对于网络环境的调试。Mac环境下模拟慢速网络可以使用苹果官方提供的工具：<strong>Network Link Conditioner</strong>。<br><a id="more"></a>   </p>
-<hr>
-<p><strong>具体操作步骤如下 :</strong>   </p>
-<p><strong>1.点击<a href="https://developer.apple.com/downloads/" target="_blank" rel="external">下载地址</a>获取苹果开发者网站提供的下载页面，这个工具被包含在Hardware IO Tools for Xcode的工具包中：</strong>   </p>
-<p><img src="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxdx3pc10j21ju0q0n3g.jpg" alt="">   </p>
-<p><strong>2.双击下载后的安装包，找到对应的工具双击安装：</strong>   </p>
-<p><img src="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxdze34n4j216s0o2gog.jpg" alt="">   </p>
-<p><img src="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxe6o7eatj210s0wytdy.jpg" alt="">   </p>
-<p><strong>3.你可以通过系统偏好设置面板来打开你的工具：</strong>   </p>
-<p><img src="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxebf4ml5j212c14c127.jpg" alt="">   </p>
-<p><strong>4.打开工具后设置你的网络配置：</strong>   </p>
-<p><img src="http://ww3.sinaimg.cn/mw690/c858e8d4gw1exxejbtk24j211i0k4gq9.jpg" alt="">   </p>
-<p><strong>5.你可以通过自定义设置来定制自己的网络需求：</strong>      </p>
-<p><img src="http://ww1.sinaimg.cn/mw690/c858e8d4gw1exxfhtqcajj210m0l478v.jpg" alt="">   </p>
-<p>   设置完成后，此时的网络设置会应用到全局，你可以使用浏览器来测试网络的访问速度，已经足够慢了。（友情提示：调试完成后不要忘记关闭你的网络设置）</p>
+        <p><strong>App迁移(App transfer)</strong>：将App从一个开发者账号迁移至另一个开发者账号。此文演示了整个迁移过程，为了方便解释，在此过程中，将App转出的开发者账号我们下文将会称之为A账号，接收App的开发者账号我们下文将会称之为B账号。</p>
+<a id="more"></a>   
+<h2 id="1-_迁移准备">1. 迁移准备</h2><ul>
+<li><p>B账号的 Apple ID (PS:A账号转出时需要填写目标账号的Apple ID）；   </p>
+</li>
+<li><p>B账号的 Team ID（PS:A账号转出时需要填写目标账号的Team ID）；   </p>
+</li>
+</ul>
+<p>Team ID的获取方法：     </p>
+<p>  （1） 使用B账号登录苹果开发者网站 “Member Center”：<a href="https://developer.apple.com/membercenter" target="_blank" rel="external">https://developer.apple.com/membercenter</a>；</p>
+<p>  （2） 点击 “Your Account”；<br>  <img src="http://ww4.sinaimg.cn/mw690/c858e8d4jw1eyl5i9nqhvj20de078q3a.jpg" alt=""><br>  <img src="http://ww2.sinaimg.cn/mw690/c858e8d4jw1eyl8vhtj6bj20de086q3b.jpg" alt=""></p>
+<h2 id="2-_App转让">2. App转让</h2><ul>
+<li><p>使用A账号登录<a href="https://itunesconnect.apple.com" target="_blank" rel="external">ITunes Connect</a>； </p>
+</li>
+<li><p>登录成功后进入 “我的App”，找到想要迁移的App；<br> <img src="http://ww1.sinaimg.cn/mw690/c858e8d4jw1eyl925k8mjj20dd084wex.jpg" alt=""><br> <img src="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eyl95whh3xj20de04xjrq.jpg" alt="">   </p>
+</li>
+<li><p>在App的信息界面找到转让App的选项；<br> <img src="http://ww1.sinaimg.cn/mw690/c858e8d4jw1eyl99y95bgj20de07kdfy.jpg" alt="">   </p>
+</li>
+<li><p>点击选项后开始正式迁移App，苹果公司要求必须要复合所有的转让条件才可以进行迁移，一般情况下都是符合的（常见的不符合条件的情况：苹果开发者网站有时候会进行更新，增加了要求开发者需要遵守的条款，如果没有遵守这些条款，会出现不符合转让条件的情况），当你符合所有条件时，你可以点击 “Continue” 进入下一步操作；<br> <img src="http://ww1.sinaimg.cn/mw690/c858e8d4jw1eyl9dxtptbj20de07h0t3.jpg" alt=""><br> <img src="http://ww4.sinaimg.cn/mw690/c858e8d4jw1eyl9jzq97vj20de08raao.jpg" alt="">   </p>
+</li>
+<li><p>你会进入到转让的相关条款页面，直接勾选“本人已阅读并同意上文显示的条款”，点击“Request Transfer”；<br> <img src="http://ww2.sinaimg.cn/mw690/c858e8d4jw1eyl9mrm1qtj20de07575f.jpg" alt="">   </p>
+</li>
+<li><p>此时你已经完成了迁移申请，只需要安安静静地等待B账号接受转让就可以了，接收者有60天期限，就是必须在60天之内回复，否则将会强制取消转让。当然如果你此时想要取消此次转让也是可以的，具体步骤如下：</p>
+<p> （1）在App的信息界面点击“请查看详细信息或取消此传输”；<br><img src="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eyl9ujmxcaj20de054mxa.jpg" alt="">   </p>
+<p> （2）找到对应的转让信息，点击“revoke”;<br><img src="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eyl9y6r58nj20de02uaa4.jpg" alt="">   </p>
+</li>
+</ul>
+<h2 id="3-_接受转让">3. 接受转让</h2><ul>
+<li><p>使用B账号登录<a href="https://itunesconnect.apple.com" target="_blank" rel="external">ITunes Connect</a>；   </p>
+</li>
+<li><p>登录成功后，你会发现主页面让多了一个一个黄色的警告，这个警告便是App的转让请求，点击进入到转让的相关信息；<br><img src="http://ww4.sinaimg.cn/mw690/c858e8d4jw1eyla32jvbsj20de05cwer.jpg" alt="">   </p>
+</li>
+<li><p>在相关信息界面找到对应的转让请求，点击 “Review” 进行信息的审核；<br><img src="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eyla8ukzo6j20de02naa4.jpg" alt="">    </p>
+</li>
+<li><p>填写新的App信息（原有的App ID等信息不会改变，只有部分信息需要你重新填写）；<br><img src="http://ww2.sinaimg.cn/mw690/c858e8d4jw1eylam54kc5j20de061mx6.jpg" alt=""> </p>
+</li>
+<li><p>同意相关条款，点击 “Accept”；<br><img src="http://ww1.sinaimg.cn/mw690/c858e8d4jw1eylajwhrv0j20dd071q3z.jpg" alt="">     </p>
+</li>
+<li><p>接受后，稍等一会儿，你会发现A账号的App已经成功迁移至B账号了，并且你还会发现，项目依然保持着上线状态，但这里仅仅是说B账号已经拥有了转移的App，但是这时在App Store查看你的App，你会发现显示的仍然是A账户的信息，信息更新会花费2-3个工作日时间，静静等待即可。<br><img src="http://ww3.sinaimg.cn/mw690/c858e8d4jw1eylap9u829j20dd05qmx7.jpg" alt=""></p>
+</li>
+</ul>
 
       
     </div>
@@ -250,18 +285,9 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2015/11/16/iOS开发-Quartz 2D(一)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          iOS开发-Quartz 2D(一)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/11/耳机状态监控/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS开发 - 耳机状态监控</div>
+    <a href="/2015/11/30/iOS开发-Socket通信/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS开发-Socket通信</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -290,7 +316,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Mac模拟慢速网络-Network-Link-Conditioner" data-title="Mac模拟慢速网络 - Network Link Conditioner" data-url="http://JinXinLiang.github.io/2015/11/11/Mac模拟慢速网络-Network-Link-Conditioner/"></div>
+	<div class="ds-thread" data-thread-key="iOS开发-APP迁移指南-APP-transfer" data-title="iOS开发-App迁移指南(App transfer)" data-url="http://JinXinLiang.github.io/2015/12/02/iOS开发-APP迁移指南-APP-transfer/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
