@@ -6,16 +6,16 @@
   
   <title>iOS开发-语音合成：AVSpeechSynthesizer | Eiwodetianna</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目前比较主流的语音识别和合成的工具“科大讯飞”很强大，使用起来也很简单，当然如果是简单的“文本到语音”的功能，在iOS中已经提供好了相关的API，开发者可以使用AV Foundation中的AVSpeedSynthesizer类来实现这个功能。">
+  <meta name="description" content="目前比较主流的语音识别和合成的工具“科大讯飞”很强大，使用起来也很简单，当然如果是简单的“文本到语音”的功能，在iOS中已经提供好了相关的API，开发者可以使用AV Foundation中的AVSpeechSynthesizer类来实现这个功能。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发-语音合成：AVSpeechSynthesizer">
 <meta property="og:url" content="http://JinXinLiang.github.io/2015/12/11/ios-AVSpeedSynthesizer/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
-<meta property="og:description" content="目前比较主流的语音识别和合成的工具“科大讯飞”很强大，使用起来也很简单，当然如果是简单的“文本到语音”的功能，在iOS中已经提供好了相关的API，开发者可以使用AV Foundation中的AVSpeedSynthesizer类来实现这个功能。">
-<meta property="og:updated_time" content="2015-12-11T09:08:43.000Z">
+<meta property="og:description" content="目前比较主流的语音识别和合成的工具“科大讯飞”很强大，使用起来也很简单，当然如果是简单的“文本到语音”的功能，在iOS中已经提供好了相关的API，开发者可以使用AV Foundation中的AVSpeechSynthesizer类来实现这个功能。">
+<meta property="og:updated_time" content="2015-12-11T09:09:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-语音合成：AVSpeechSynthesizer">
-<meta name="twitter:description" content="目前比较主流的语音识别和合成的工具“科大讯飞”很强大，使用起来也很简单，当然如果是简单的“文本到语音”的功能，在iOS中已经提供好了相关的API，开发者可以使用AV Foundation中的AVSpeedSynthesizer类来实现这个功能。">
+<meta name="twitter:description" content="目前比较主流的语音识别和合成的工具“科大讯飞”很强大，使用起来也很简单，当然如果是简单的“文本到语音”的功能，在iOS中已经提供好了相关的API，开发者可以使用AV Foundation中的AVSpeechSynthesizer类来实现这个功能。">
   
     <link rel="alternative" href="/atom.xml" title="Eiwodetianna" type="application/atom+xml">
   
@@ -220,7 +220,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>目前比较主流的语音识别和合成的工具“科大讯飞”很强大，使用起来也很简单，当然如果是简单的“文本到语音”的功能，在iOS中已经提供好了相关的API，开发者可以使用AV Foundation中的AVSpeedSynthesizer类来实现这个功能。<br><a id="more"></a></p>
+        <p>目前比较主流的语音识别和合成的工具“科大讯飞”很强大，使用起来也很简单，当然如果是简单的“文本到语音”的功能，在iOS中已经提供好了相关的API，开发者可以使用AV Foundation中的AVSpeechSynthesizer类来实现这个功能。<br><a id="more"></a></p>
 <h3 id="AVSpeedSynthesizer">AVSpeedSynthesizer</h3><p>这个类可以用来播放一个或者多个语音内容，播放的语音内容都是通过实例化AVSpeechUtterance而得到，对于一个或者多个AVSpeechUtterance实例，AVSpeechSynthesizer对象祈祷队列的作用，提供了API可以控制和监视正在进行的语音播放，首先引入头文件：</p>
 <pre><code><span class="preprocessor">#import <span class="title">&lt;AVFoundation/AVFoundation.h&gt;</span></span>
 </code></pre><p>创建AVSpeechSynthesizer：</p>
