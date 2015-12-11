@@ -120,7 +120,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/APP-Store/" style="font-size: 10px;">APP Store</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/UIWebView/" style="font-size: 10px;">UIWebView</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iOS问题集/" style="font-size: 10px;">iOS问题集</a> <a href="/tags/绘图/" style="font-size: 10px;">绘图</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/调试技巧/" style="font-size: 10px;">调试技巧</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a>
+						<a href="/tags/APP-Store/" style="font-size: 10px;">APP Store</a> <a href="/tags/AVFoundation/" style="font-size: 10px;">AVFoundation</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/UIWebView/" style="font-size: 10px;">UIWebView</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iOS问题集/" style="font-size: 10px;">iOS问题集</a> <a href="/tags/绘图/" style="font-size: 10px;">绘图</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/调试技巧/" style="font-size: 10px;">调试技巧</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a>
 					</div>
 				</section>
 				
@@ -183,6 +183,117 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-ios-AVSpeedSynthesizer" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/11/ios-AVSpeedSynthesizer/" class="article-date">
+  	<time datetime="2015-12-11T06:47:16.000Z" itemprop="datePublished">2015-12-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/11/ios-AVSpeedSynthesizer/">iOS开发－语音合成：AVSpeedSynthesizer</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>目前比较主流的语音识别和合成的工具“科大讯飞”很强大，使用起来也很简单，当然如果是简单的“文本到语音”的功能，在iOS中已经提供好了相关的API，开发者可以使用AV Foundation中的AVSpeedSynthesizer类来实现这个功能。
+<span class="comment">&lt;!--more--&gt;</span>
+</code></pre><h3 id="AVSpeedSynthesizer">AVSpeedSynthesizer</h3><p>这个类可以用来播放一个或者多个语音内容，播放的语音内容都是通过实例化AVSpeechUtterance而得到，对于一个或者多个AVSpeechUtterance实例，AVSpeechSynthesizer对象祈祷队列的作用，提供了API可以控制和监视正在进行的语音播放，首先引入头文件：</p>
+<pre><code><span class="preprocessor">#import <span class="title">&lt;AVFoundation/AVFoundation.h&gt;</span></span>
+</code></pre><p>创建AVSpeechSynthesizer：</p>
+<pre><code>AVSpeechSynthesizer *synthesizer = <span class="comment">[<span class="comment">[AVSpeechSynthesizer alloc]</span> init]</span>;
+</code></pre><p>播放合成语音的相关方法:</p>
+<pre><code><span class="pp">- <span class="params">(void)</span>speakUtterance:<span class="params">(<span class="variable">AVSpeechUtterance</span> *)</span>utterance;</span>
+</code></pre><p>AVSpeechSynthesizerDelegate协议的监听方法：</p>
+<pre><code><span class="annotation">@optional</span>
+<span class="comment">// 播放开始状态</span>
+- (<span class="typename">void</span>)<span class="string">speechSynthesizer:</span>(AVSpeechSynthesizer *)synthesizer <span class="string">didStartSpeechUtterance:</span>(AVSpeechUtterance *)utterance;
+<span class="comment">// 播放结束状态</span>
+- (<span class="typename">void</span>)<span class="string">speechSynthesizer:</span>(AVSpeechSynthesizer *)synthesizer <span class="string">didFinishSpeechUtterance:</span>(AVSpeechUtterance *)utterance;
+<span class="comment">// 播放暂停状态</span>
+- (<span class="typename">void</span>)<span class="string">speechSynthesizer:</span>(AVSpeechSynthesizer *)synthesizer <span class="string">didPauseSpeechUtterance:</span>(AVSpeechUtterance *)utterance;
+<span class="comment">// 跳出播放状态</span>
+- (<span class="typename">void</span>)<span class="string">speechSynthesizer:</span>(AVSpeechSynthesizer *)synthesizer <span class="string">didContinueSpeechUtterance:</span>(AVSpeechUtterance *)utterance;
+<span class="comment">// 退出播放状态</span>
+- (<span class="typename">void</span>)<span class="string">speechSynthesizer:</span>(AVSpeechSynthesizer *)synthesizer <span class="string">didCancelSpeechUtterance:</span>(AVSpeechUtterance *)utterance;
+<span class="comment">// 播放状态时，当前所播放的字符串范围，及AVSpeechUtterance实例（可通过此方法监听当前播放的字或者词）</span>
+- (<span class="typename">void</span>)<span class="string">speechSynthesizer:</span>(AVSpeechSynthesizer *)synthesizer <span class="string">willSpeakRangeOfSpeechString:</span>(NSRange)characterRange <span class="string">utterance:</span>(AVSpeechUtterance *)utterance;
+</code></pre><h3 id="AVSpeechSynthesisUtterance">AVSpeechSynthesisUtterance</h3><p>这个类的一个实例可以理解为合成的一段语音所需要的内容和设置，其中包含了文本内容，语速，音调等信息。播放合成一段最简单的“Hello!”语音如下：</p>
+<pre><code><span class="comment">// 创建 AVSpeechSynthesizer</span>
+<span class="built_in">AVSpeechSynthesizer</span> *synthesizer = [[<span class="built_in">AVSpeechSynthesizer</span> alloc] init];
+<span class="comment">// 创建 AVSpeechUtterance</span>
+<span class="built_in">AVSpeechUtterance</span> *utterance = [[<span class="built_in">AVSpeechUtterance</span> alloc] initWithString:<span class="string">@"Hello!"</span>];
+<span class="comment">// 播放合成语音</span>
+[synthesizer speakUtterance:utterance];
+</code></pre><p>当然你也可以播放多段语音并且加上一些语音的设置：</p>
+<pre><code><span class="comment">// 创建合成语音的语言</span>
+<span class="built_in">AVSpeechSynthesisVoice</span> *voiceLanguage = [<span class="built_in">AVSpeechSynthesisVoice</span> voiceWithLanguage:<span class="string">@"zh-CN"</span>];
+
+<span class="built_in">NSArray</span> *speechStrings = @[<span class="string">@"锄禾日当午，汗滴禾下土。"</span>, <span class="string">@"谁知盘中餐，粒粒皆辛苦。"</span>];
+
+<span class="comment">// 创建 AVSpeechSynthesizer</span>
+<span class="built_in">AVSpeechSynthesizer</span> *synthesizer = [[<span class="built_in">AVSpeechSynthesizer</span> alloc] init];
+
+<span class="built_in">NSUInteger</span> stringCount = speechStrings<span class="variable">.count</span>;
+<span class="keyword">for</span> (<span class="built_in">NSUInteger</span> i = <span class="number">0</span>; i &lt; stringCount; i++) {
+
+    <span class="built_in">AVSpeechUtterance</span> *utterance = [[<span class="built_in">AVSpeechUtterance</span> alloc] initWithString:_speechStrings[i]];
+    <span class="comment">// 设置合成语音的语言</span>
+    utterance<span class="variable">.voice</span> = voiceLanguage;
+    <span class="comment">// 语速 0.0f～1.0f</span>
+    utterance<span class="variable">.rate</span> = <span class="number">0.5</span>f;
+    <span class="comment">// 声音的音调 0.5f～2.0f</span>
+    utterance<span class="variable">.pitchMultiplier</span> = <span class="number">0.8</span>f;
+    <span class="comment">// 使播放下一句的时候有0.1秒的延迟</span>
+    utterance<span class="variable">.postUtteranceDelay</span> = <span class="number">0.1</span>f;
+
+    [_synthesizer speakUtterance:utterance];
+}
+<span class="comment">// 播放合成语音</span>
+[synthesizer speakUtterance:utterance];
+</code></pre><p>ps：“zh-CN” 指的是简体中文的语言代码，默认是不支持中文合成的，所以我们需要通过这行代码设置，你可以通过AVSpeechSynesisVoice的类方法获取其支持的各种语言代码：</p>
+<pre><code><span class="title">[AVSpeechSynthesisVoice speechVoices]</span><span class="comment">;</span>
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语音合成/">语音合成</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-iOS开发-App-transfer" class="article article-type-post" itemscope itemprop="blogPost">
   
