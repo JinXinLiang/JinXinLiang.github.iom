@@ -14,7 +14,7 @@
 <meta property="og:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f056p688dxj20vl0l2q9c.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1f056r95ku6j20jz0e6757.jpg">
-<meta property="og:updated_time" content="2016-01-20T19:10:22.000Z">
+<meta property="og:updated_time" content="2016-01-20T19:14:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-代码细节优化(长期更新)">
 <meta name="twitter:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
@@ -335,7 +335,8 @@ NSArray *arrayB = @[<span class="keyword">object</span><span class="number">1</s
         <span class="built_in">UIViewAnimationTransitionCurlDown</span>, 
     }; 
 </code></pre><p>这个枚举含有5个值，分别表示了5种动画状态，如果系统以“0”，“1”，“2”等这样的数字来表示状态的话，作为开发者想要知道每个数字代表什么样的动画效果只能一个一个的去测试，并且需要记住每一个数字代表什么状态，方便以后使用，那么我相信绝大多数开发者都会疯掉的。</p>
-<h3 id="7-使用ARC">7.使用ARC</h3><p>ARC的出现使开发者减轻对内存把控的压力，减少了编码量，并且ARC目前已趋近于稳定，出错的概率很小，在代码执行效率上要高于MRC机制下的编写，因为ARC机制是Xcode编译器的特性，编译器会根据上下文语境插入相关的内存管理代码，并且这些代码是较为底层的，最重要的是会根据语境抵消retain和release操作，也就是说编译器检测到当一个对象需要五次retain操作，四次release操作的时候，它只做一次的retain操作，减少了方法调用，大大提升了效率。</p>
+<h3 id="7-使用ARC">7.使用ARC</h3><p>ARC的出现使开发者减轻对内存把控的压力，减少了编码量，并且ARC目前已趋近于稳定，出错的概率很小，在代码执行效率上要高于MRC机制下的编写，因为ARC机制是Xcode编译器的特性，编译器会根据上下文语境插入相关的内存管理代码，并且这些代码是较为底层的，最重要的是会根据语境抵消retain和release操作，也就是说编译器检测到当一个对象需要五次retain操作，四次release操作的时候，它只做一次的retain操作，减少了方法调用，大大提升了效率。   </p>
+<p>####参考：<br><a href="http://www.cocoachina.com/ios/20140816/9395.html" target="_blank" rel="external">《Objective-C 之优雅的命名》</a><br>     《EffectiveObjective-C2.0-编写高质量iOS与OSx代码的52个有效方法》</p>
 
       
     </div>
