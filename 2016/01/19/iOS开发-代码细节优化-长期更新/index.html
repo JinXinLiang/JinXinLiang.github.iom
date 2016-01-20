@@ -14,7 +14,7 @@
 <meta property="og:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f056p688dxj20vl0l2q9c.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1f056r95ku6j20jz0e6757.jpg">
-<meta property="og:updated_time" content="2016-01-20T18:28:53.000Z">
+<meta property="og:updated_time" content="2016-01-20T18:32:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-代码细节优化(长期更新)">
 <meta name="twitter:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
@@ -243,11 +243,15 @@ var _hmt = _hmt || [];
 <p><img src="http://ww2.sinaimg.cn/mw690/c858e8d4jw1f056r95ku6j20jz0e6757.jpg" alt=""></p>
 <p>这里需要注意的是，推荐大家使用三个字母以上作为类的前缀，很多开发者都习惯于使用两个字母作为前缀（本人以前也是），但是苹果公司保留了两个字母作为类前缀的权利，大家可以发现苹果公司的类都是以框架名缩写并且都是两个字母作为前缀的，为了避免苹果公司将来新发布的框架缩写和你的前缀发生冲突，所以采用三个字母以上的前缀命名方案。不光类名如此，类目及延展或者自定义的结构体等同样推荐使用前缀。</p>
 <h3 id="5-类目方法及私有方法添加前缀">5.类目方法及私有方法添加前缀</h3><ul>
-<li>方法命名：Objective-C这门语言的语法在其他语言的开发者眼中一直是很怪异的语言，它的方法名除了使用了方括号，方法名长的有够过分，但是正是因为这个特点，我们阅读Objective-C代码的时候就像阅读英文语句一样通俗易懂。尤其是很多人喜欢使用词汇的缩写来命名方法，命名缩写只用于通用专业术语，如 URL，不可自创命名缩写，如 Str、Msg。命名宁可长一些，也不要难于理解。在方法开头通常使用表明执行此方法的目的词汇，如“init”，“sort”，“find”等词汇，案例：<pre><code><span class="pp">- <span class="params">(<span class="variable">NSArray</span>&lt;<span class="variable">ObjectType</span>&gt; *)</span>sortedArrayUsingSelector:<span class="params">(<span class="variable">SEL</span>)</span>comparator;  // 表明目的是排序</span>
-</code></pre>也可能以返回值的类型进行开头(ps：其实也是在表明目的，只不过目的是获取某种数据)，如：“string”，“data”，“image”等，案例：<pre><code>- (<span class="built_in">NSRange</span>)rangeOfString:(<span class="built_in">NSString</span> *)searchString;  <span class="comment">// 表明获取一个range</span>
-</code></pre>如果该方法需要参数，每个参数前最好添加参数提示。如下面两种代码对比。<pre><code>-<span class="ruby"> (instancetype)<span class="symbol">init:</span>(<span class="constant">CGRect</span>)frame;  <span class="regexp">//</span> 糟糕的方法命名
+<li><p>方法命名：Objective-C这门语言的语法在其他语言的开发者眼中一直是很怪异的语言，它的方法名除了使用了方括号，方法名长的有够过分，但是正是因为这个特点，我们阅读Objective-C代码的时候就像阅读英文语句一样通俗易懂。尤其是很多人喜欢使用词汇的缩写来命名方法，命名缩写只用于通用专业术语，如 URL，不可自创命名缩写，如 Str、Msg。命名宁可长一些，也不要难于理解。在方法开头通常使用表明执行此方法的目的词汇，如“init”，“sort”，“find”等词汇，案例：</p>
+<pre><code><span class="pp">- <span class="params">(<span class="variable">NSArray</span>&lt;<span class="variable">ObjectType</span>&gt; *)</span>sortedArrayUsingSelector:<span class="params">(<span class="variable">SEL</span>)</span>comparator;  // 表明目的是排序</span>
+</code></pre><p>也可能以返回值的类型进行开头(ps：其实也是在表明目的，只不过目的是获取某种数据)，如：“string”，“data”，“image”等，案例：</p>
+<pre><code>- (<span class="built_in">NSRange</span>)rangeOfString:(<span class="built_in">NSString</span> *)searchString;  <span class="comment">// 表明获取一个range</span>
+</code></pre><p>如果该方法需要参数，每个参数前最好添加参数提示。如下面两种代码对比。</p>
+<pre><code>-<span class="ruby"> (instancetype)<span class="symbol">init:</span>(<span class="constant">CGRect</span>)frame;  <span class="regexp">//</span> 糟糕的方法命名
 </span>-<span class="ruby"> (instancetype)<span class="symbol">initWithFrame:</span>(<span class="constant">CGRect</span>)frame;  <span class="regexp">//</span> 好的方法命名</span>
-</code></pre>一些代表过程监听的方法可能以“谁执行什么过程”这种形式命名，且动作发生之前通常使用“Will”，发生之后使用“Did”，询问是否发生使用“Should”。案例:<pre><code>- <span class="list">(<span class="keyword">void</span>)</span>viewDidLoad<span class="comment">;</span>
+</code></pre><p>一些代表过程监听的方法可能以“谁执行什么过程”这种形式命名，且动作发生之前通常使用“Will”，发生之后使用“Did”，询问是否发生使用“Should”。案例:</p>
+<pre><code>- <span class="list">(<span class="keyword">void</span>)</span>viewDidLoad<span class="comment">;</span>
 </code></pre></li>
 <li><p>类目方法：如果我们在编码中使用类目给一些系统的类拓展方法，那么推荐给这些方法添加前缀，目的很简单，就是避免和这个类的私有方法或者将来系统可能拓展的方法出现方法名相同的冲突。如我当初在写夜间模式的demo的时候给UIView写了一个类目，拓展的方法名我使用了姓名的缩写“jxl”作为方法的前缀。   </p>
 <pre><code><span class="pp">- <span class="params">(void)</span>jxl_setDayMode:<span class="params">(<span class="variable">DAY_AND_NIGHT_MODE_BLOCK</span>)</span>dayMode nightMode:<span class="params">(<span class="variable">DAY_AND_NIGHT_MODE_BLOCK</span>)</span>nightMode;   </span>
