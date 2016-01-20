@@ -14,7 +14,7 @@
 <meta property="og:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f056p688dxj20vl0l2q9c.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1f056r95ku6j20jz0e6757.jpg">
-<meta property="og:updated_time" content="2016-01-20T19:24:20.000Z">
+<meta property="og:updated_time" content="2016-01-20T19:27:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-代码细节优化(长期更新)">
 <meta name="twitter:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
@@ -301,7 +301,7 @@ insert nil <span class="built_in">object</span> <span class="keyword">from</span
 </code></pre><p>案例:</p>
 <pre><code>NSArray *arrayA = [NSArray arrayWithObjects:<span class="keyword">object</span><span class="number">1</span>, <span class="keyword">object</span><span class="number">2</span>, <span class="keyword">object</span><span class="number">3</span>, nil];
 NSArray *arrayB = @[<span class="keyword">object</span><span class="number">1</span>, <span class="keyword">object</span><span class="number">2</span>, <span class="keyword">object</span><span class="number">3</span>];
-</code></pre><p>针对上面代码进行分析，如果object2=nil;,arrayA数组可以创建，但只有object1一个对象，因为“arrayWithObjects:”方法会一次处理各个参数，直到发现nil为止，而arrayB会抛出异常，这个特性使我们更容易发现程序中存在的问题，提高了安全性。ps：字典跟数组一样，一旦有值为nil，也会抛出异常，而且创建时的“键”“值”顺序和我们正常说的“键值”顺序一样（正常初始化为“值”“键”），便于阅读。</p>
+</code></pre><p>针对上面代码进行分析，如果object2=nil;,arrayA数组可以创建，但只有object1一个对象，因为“+ (instancetype)arrayWithObjects:”方法会一次处理各个参数，直到发现nil为止，而arrayB会抛出异常，这个特性使我们更容易发现程序中存在的问题，提高了安全性。ps：字典跟数组一样，一旦有值为nil，也会抛出异常，而且创建时的“键”“值”顺序和我们正常说的“键值”顺序一样（正常初始化为“值”“键”），便于阅读。</p>
 <p>使用字面量语法的缺点：使用字面量创建都是不可变对象，如果想创建可变对象需要复制一份：</p>
 <pre><code><span class="constant">NSMutableArray</span> *mutableArray = [<span class="annotation">@[<span class="variable">@1</span>, <span class="variable">@2</span>, <span class="variable">@3</span>]</span> mutableCopy];
 </code></pre><h3 id="5-使用类型常量替换#define预处理指令">5.使用类型常量替换#define预处理指令</h3><p>在编写代码时，我们常用#define去定义一个宏。我们定义一个播放动画的时间为常量，可能这样定义：</p>
