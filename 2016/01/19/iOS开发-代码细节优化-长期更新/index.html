@@ -14,7 +14,7 @@
 <meta property="og:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f056p688dxj20vl0l2q9c.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1f056r95ku6j20jz0e6757.jpg">
-<meta property="og:updated_time" content="2016-01-20T19:27:08.000Z">
+<meta property="og:updated_time" content="2016-01-20T19:28:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-代码细节优化(长期更新)">
 <meta name="twitter:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
@@ -224,7 +224,6 @@ var _hmt = _hmt || [];
       
         <p>代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。<br><a id="more"></a></p>
 <h2 id="命名法则">命名法则</h2><p>在代码书写方面首先要先来谈谈各种命名的规则。在企业中往往要先统一代码规范，这个做法是值得且有必要的，代码规范可以使项目的代码看起来更加美观整洁，可以降低沟通的成本，可以避免低级错误等多种好处。</p>
-<hr>
 <h3 id="1-变量命名法则">1.变量命名法则</h3><p>比较常用的变量命名法则有三种：驼峰命名法；下划线命名法；帕斯卡命名法。</p>
 <ul>
 <li><p>驼峰命名法：用的最广的命名法，变量名常用此命名，命名由一个单词或多个单词组合而成，首字母小写其余单词首字母大写，如：“userName”；</p>
@@ -273,7 +272,6 @@ var _hmt = _hmt || [];
     <span class="built_in">UIViewAnimationTransitionCurlDown</span>, 
 }; 
 </code></pre><h2 id="代码编写设计">代码编写设计</h2><p>在编写代码的时候，注意一些细节上的处理，如代码编写方式或者API设计会使我们的代码业务逻辑更清晰，可读性更高，或者更方便调试和维护。</p>
-<hr>
 <h3 id="1-成员变量_VS_Setter&amp;Getter">1.成员变量 VS Setter&amp;Getter</h3><p>一些刚刚入门的iOS开发者总是纠结在给属性赋值或者取值的时候，究竟是直接操作成员变量还是通过使用setter或者getter进行赋值取值操作，关于这个问题很多人的观点也不相同，从性能上来说，由于Objective-C的消息机制使用setter和getter效率要比直接操作成员变量的效率低，从内存方面来说，setter和getter都有内存的处理，所以使用起来更安全，一个折中的办法是除lazyLoading对象外，赋值时使用setter，取值时直接操作成员变量，这样既保障了内存的安全，又提升了效率，而且通常我们的取值操作又多于赋值操作。这里可能有好多开发者习惯所有的属性都使用lazyLoading的方式去创建，觉得这部分的效率提升可以牺牲掉换来更强的代码逻辑层次，这个问题我会在紧接着的关于<strong>纯代码对象创建的编写方式优化</strong>里去谈。</p>
 <h3 id="2-纯代码对象创建的编写方式优化">2.纯代码对象创建的编写方式优化</h3><p>使用纯代码创建一个视图对象，下面的方法我们已经再熟悉不过了：</p>
 <pre><code>UIView *subView = <span class="comment">[<span class="comment">[UIView alloc]</span> initWithFrame:<span class="comment">[UIScreen mainScreen]</span>.bounds]</span>;
