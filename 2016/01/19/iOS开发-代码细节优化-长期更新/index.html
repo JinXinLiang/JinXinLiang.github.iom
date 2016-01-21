@@ -14,7 +14,7 @@
 <meta property="og:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人能够积极补充，共同来维护这篇文章。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f056p688dxj20vl0l2q9c.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1f056r95ku6j20jz0e6757.jpg">
-<meta property="og:updated_time" content="2016-01-21T13:16:36.000Z">
+<meta property="og:updated_time" content="2016-01-21T13:19:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-代码细节优化(长期更新)">
 <meta name="twitter:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人能够积极补充，共同来维护这篇文章。">
@@ -284,7 +284,7 @@ subView.backgroundColor = <span class="comment">[UIColor whiteColor]</span>;
     [<span class="keyword">self</span><span class="variable">.view</span> addSubview:view];
     view;
 });
-</code></pre><p>第二种写法比较少见，知道的人并不多，这种写法为GCC对C的拓展，如今呗clang继承（ps：详情请参考<a href="https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html" target="_blank" rel="external">GCC的官方说明</a>），有点像block和内联函数的结合体，它最大的好处是使代码逻辑结构层次划分得更加明显，同时对于一个无需复用小段逻辑，也免去了重量级的调用函数，而且还有一个好处是，当你想要复制粘贴这段代码时，你仅需要更改一处变量名即可，就上例而言需要更改三处变量名。在<strong>成员变量 VS Setter&amp;Getter</strong>话题我们说到许多开发者习惯使用lazyLoading的方式创建对象，因为这样逻辑层次很清晰，但是我个人觉得对比这种GCC的写法，同样具有逻辑层次，这种“({})”包裹起来的方式可以让我们的肉眼很容易捕捉这段代码的主体，而且使用这种lazyLoading创建的对象形式前提是你使用getter，而一些临时变量是没有getter的，而且使用lazyLoading你还需要找到对应getter方法实现的位置去看具体的设置，没有这个一目了然。还有一点就是，lazyLoading对象主要优点是延迟加载内存，在需要被使用的时候才会被创建，增加类的灵活性，更好的控制内存。而针对一些必然会创建的对象有些大材小用，失去原本的意义了。</p>
+</code></pre><p>第二种写法比较少见，知道的人并不多，这种写法为GCC对C的拓展，如今呗clang继承，有点像block和内联函数的结合体，它最大的好处是使代码逻辑结构层次划分得更加明显，同时对于一个无需复用小段逻辑，也免去了重量级的调用函数，而且还有一个好处是，当你想要复制粘贴这段代码时，你仅需要更改一处变量名即可，就上例而言需要更改三处变量名。在<strong>成员变量 VS Setter&amp;Getter</strong>话题我们说到许多开发者习惯使用lazyLoading的方式创建对象，因为这样逻辑层次很清晰，但是我个人觉得对比这种GCC的写法，同样具有逻辑层次，这种“({})”包裹起来的方式可以让我们的肉眼很容易捕捉这段代码的主体，而且使用这种lazyLoading创建的对象形式前提是你使用getter，而一些临时变量是没有getter的，而且使用lazyLoading你还需要找到对应getter方法实现的位置去看具体的设置，没有这个一目了然。还有一点就是，lazyLoading对象主要优点是延迟加载内存，在需要被使用的时候才会被创建，增加类的灵活性，更好的控制内存。而针对一些必然会创建的对象有些大材小用，失去原本的意义了。</p>
 <h3 id="4-使用字面量语法替换等价方法">4.使用字面量语法替换等价方法</h3><p>字面量语法实际上是一种“语法糖”（syntactic sugar），以一种非常简单快捷的方式能创建对象，使我们开发者编程更高效，更愉悦。目前Objective-C支持的字面量语法的类有NSString，NSNumber, NSArray, NSDictionary。使用字面量语法的好处：</p>
 <ul>
 <li><p>使用字面量语法可以缩减源代码长度，没有多余语法成分，提高可读性；</p>
@@ -355,7 +355,7 @@ NSArray *arrayB = @[<span class="keyword">object</span><span class="number">1</s
 <span class="comment">// Methods...</span>
 </code></pre><p>将整个ViewController生命周期，系统或者自定义的协议方法（协议名称写完全，这样做的好处是可以直接点击mark后面的协议名跳转至此协议声明位置），一些事件的响应，私有方法，setter和getter方法，是你的代码更方便查找。如果是.h文件中声明的方法，最好使用类目进行方法归类，你可以查看系统的方法声明，做法亦是如此，使API的查看更加方便且清晰。</p>
 <h3 id="9-使用ARC">9.使用ARC</h3><p>ARC的出现使开发者减轻对内存把控的压力，减少了编码量并且ARC目前已趋近于稳定，出错的概率很小，在代码执行效率上要高于MRC机制下的编写，因为ARC机制是Xcode编译器的特性，编译器会根据上下文语境插入相关的内存管理代码，并且这些代码是较为底层的，最重要的是会根据语境抵消retain和release操作，也就是说编译器检测到当一个对象需要五次retain操作，四次release操作的时候，它只做一次的retain操作，减少了方法调用，大大提升了效率。   </p>
-<h3 id="参考：">参考：</h3><p><a href="http://www.cocoachina.com/ios/20140816/9395.html" target="_blank" rel="external">《Objective-C 之优雅的命名》</a><br>《Effective Objective-C 2.0-编写高质量iOS与OS X代码的52个有效方法》</p>
+<h3 id="参考：">参考：</h3><p><a href="https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html" target="_blank" rel="external">《GCC的官方说明》</a><br><a href="http://www.cocoachina.com/ios/20140816/9395.html" target="_blank" rel="external">《Objective-C 之优雅的命名》</a><br><a href="http://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" rel="external">《iOS应用架构谈 view层的组织和调用方案》</a><br>《Effective Objective-C 2.0-编写高质量iOS与OS X代码的52个有效方法》</p>
 
       
     </div>
