@@ -14,7 +14,7 @@
 <meta property="og:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f056p688dxj20vl0l2q9c.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1f056r95ku6j20jz0e6757.jpg">
-<meta property="og:updated_time" content="2016-01-21T13:10:31.000Z">
+<meta property="og:updated_time" content="2016-01-21T13:11:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-代码细节优化(长期更新)">
 <meta name="twitter:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人也能够积极补充，共同来维护这篇文章。">
@@ -340,7 +340,7 @@ NSArray *arrayB = @[<span class="keyword">object</span><span class="number">1</s
     UITableViewDelegate <span class="comment">// 你的注释</span>
 &gt;
 <span class="variable">@end</span>
-</code></pre><h3 id="8-将你的代码做好整理">8.将你的代码做好整理</h3><p>为了让你的代码更整洁，你需要将你的代码做好归类整理，例如一个ViewController里的代码可能是这样：</p>
+</code></pre><h3 id="8-将你的代码做好整理">8.将你的代码做好整理</h3><p>为了让你的代码更整洁，你需要将你的代码做好归类整理，例如一个ViewController实现文件里的代码可能是这样：</p>
 <pre><code><span class="id">#pragma</span> <span class="tag">mark</span> - life cycle
 <span class="comment">// Methods...</span>
 <span class="id">#pragma</span> <span class="tag">mark</span> - UITableViewDataSource
@@ -353,7 +353,7 @@ NSArray *arrayB = @[<span class="keyword">object</span><span class="number">1</s
 <span class="comment">// Methods...</span>
 <span class="id">#pragma</span> <span class="tag">mark</span> - getters and setters
 <span class="comment">// Methods...</span>
-</code></pre><p>将整个ViewController生命周期，系统或者自定义的协议方法（协议名称写完全，这样做的好处是可以直接点击mark后面的协议名跳转至此协议声明位置），一些事件的响应，私有方法，setter和getter方法，是你的代码更方便查找，如果是.h文件中声明的方法，最好使用类目进行方法归类，你可以查看系统的方法声明，做法亦是如此，是API的查看更加方便且清晰。</p>
+</code></pre><p>将整个ViewController生命周期，系统或者自定义的协议方法（协议名称写完全，这样做的好处是可以直接点击mark后面的协议名跳转至此协议声明位置），一些事件的响应，私有方法，setter和getter方法，是你的代码更方便查找。如果是.h文件中声明的方法，最好使用类目进行方法归类，你可以查看系统的方法声明，做法亦是如此，使API的查看更加方便且清晰。</p>
 <h3 id="9-使用ARC">9.使用ARC</h3><p>ARC的出现使开发者减轻对内存把控的压力，减少了编码量并且ARC目前已趋近于稳定，出错的概率很小，在代码执行效率上要高于MRC机制下的编写，因为ARC机制是Xcode编译器的特性，编译器会根据上下文语境插入相关的内存管理代码，并且这些代码是较为底层的，最重要的是会根据语境抵消retain和release操作，也就是说编译器检测到当一个对象需要五次retain操作，四次release操作的时候，它只做一次的retain操作，减少了方法调用，大大提升了效率。   </p>
 <h3 id="参考：">参考：</h3><p><a href="http://www.cocoachina.com/ios/20140816/9395.html" target="_blank" rel="external">《Objective-C 之优雅的命名》</a><br>《Effective Objective-C 2.0-编写高质量iOS与OS X代码的52个有效方法》</p>
 
