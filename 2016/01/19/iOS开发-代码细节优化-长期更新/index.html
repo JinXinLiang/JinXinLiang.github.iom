@@ -14,7 +14,7 @@
 <meta property="og:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人能够积极补充，共同来维护这篇文章。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f056p688dxj20vl0l2q9c.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1f056r95ku6j20jz0e6757.jpg">
-<meta property="og:updated_time" content="2016-01-21T13:23:03.000Z">
+<meta property="og:updated_time" content="2016-01-21T13:26:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-代码细节优化(长期更新)">
 <meta name="twitter:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人能够积极补充，共同来维护这篇文章。">
@@ -272,7 +272,7 @@ var _hmt = _hmt || [];
     <span class="built_in">UIViewAnimationTransitionCurlDown</span>, 
 }; 
 </code></pre><h2 id="代码编写设计">代码编写设计</h2><p>在编写代码的时候，注意一些细节上的处理，如代码编写方式或者API设计会使我们的代码业务逻辑更清晰，可读性更高，或者更方便调试和维护。</p>
-<h3 id="1-成员变量_VS_Setter&amp;Getter">1.成员变量 VS Setter&amp;Getter</h3><p>一些刚刚入门的iOS开发者总是纠结在给属性赋值或者取值的时候，究竟是直接操作成员变量还是通过使用setter或者getter进行赋值取值操作，关于这个问题很多人的观点也不相同，从性能上来说，由于Objective-C的消息机制使用setter和getter效率要比直接操作成员变量的效率低，从内存方面来说，setter和getter都有内存的处理，所以使用起来更安全，一个折中的办法是除lazyLoading对象外，赋值时使用setter，取值时直接操作成员变量，这样既保障了内存的安全，又提升了效率，而且通常我们的取值操作又多于赋值操作。这里可能有好多开发者习惯所有的属性都使用lazyLoading的方式去创建，觉得这部分的效率提升可以牺牲掉换来更强的代码逻辑层次，这个问题我会在紧接着的关于<strong>纯代码对象创建的编写方式优化</strong>里去谈。</p>
+<h3 id="1-成员变量_VS_Setter&amp;Getter">1.成员变量 VS Setter&amp;Getter</h3><p>一些刚刚入门的iOS开发者总是纠结在给属性赋值或者取值的时候，究竟是直接操作成员变量还是通过使用setter或者getter进行赋值取值操作，关于这个问题很多人的观点也不相同，从性能上来说，由于Objective-C的消息机制使用setter和getter效率要比直接操作成员变量的效率低，从内存方面来说，setter和getter都有内存的处理，所以使用起来更安全，一个折中的办法是除Lazy Loading对象外，赋值时使用setter，取值时直接操作成员变量，这样既保障了内存的安全，又提升了效率，而且通常我们的取值操作又多于赋值操作。这里可能有好多开发者习惯所有的属性都使用Lazy Loading的方式去创建，觉得这部分的效率提升可以牺牲掉换来更强的代码逻辑层次，这个问题我会在紧接着的关于<strong>纯代码对象创建的编写方式优化</strong>里去谈。</p>
 <h3 id="2-纯代码对象创建的编写方式优化">2.纯代码对象创建的编写方式优化</h3><p>使用纯代码创建一个视图对象，下面的方法我们已经再熟悉不过了：</p>
 <pre><code>UIView *subView = <span class="comment">[<span class="comment">[UIView alloc]</span> initWithFrame:<span class="comment">[UIScreen mainScreen]</span>.bounds]</span>;
 subView.backgroundColor = <span class="comment">[UIColor whiteColor]</span>;
@@ -284,7 +284,7 @@ subView.backgroundColor = <span class="comment">[UIColor whiteColor]</span>;
     [<span class="keyword">self</span><span class="variable">.view</span> addSubview:view];
     view;
 });
-</code></pre><p>第二种写法比较少见，知道的人并不多，这种写法为GCC对C的拓展，如今呗clang继承，有点像block和内联函数的结合体，它最大的好处是使代码逻辑结构层次划分得更加明显，同时对于一个无需复用小段逻辑，也免去了重量级的调用函数，而且还有一个好处是，当你想要复制粘贴这段代码时，你仅需要更改一处变量名即可，就上例而言需要更改三处变量名。在<strong>成员变量 VS Setter&amp;Getter</strong>话题我们说到许多开发者习惯使用lazyLoading的方式创建对象，因为这样逻辑层次很清晰，但是我个人觉得对比这种GCC的写法，同样具有逻辑层次，这种“({})”包裹起来的方式可以让我们的肉眼很容易捕捉这段代码的主体，而且使用这种lazyLoading创建的对象形式前提是你使用getter，而一些临时变量是没有getter的，而且使用lazyLoading你还需要找到对应getter方法实现的位置去看具体的设置，没有这个一目了然。还有一点就是，lazyLoading对象主要优点是延迟加载内存，在需要被使用的时候才会被创建，增加类的灵活性，更好的控制内存。而针对一些必然会创建的对象有些大材小用，失去原本的意义了。</p>
+</code></pre><p>第二种写法比较少见，知道的人并不多，这种写法为GCC对C的拓展，如今呗clang继承，有点像block和内联函数的结合体，它最大的好处是使代码逻辑结构层次划分得更加明显，同时对于一个无需复用小段逻辑，也免去了重量级的调用函数，而且还有一个好处是，当你想要复制粘贴这段代码时，你仅需要更改一处变量名即可，就上例而言需要更改三处变量名。在<strong>成员变量 VS Setter&amp;Getter</strong>话题我们说到许多开发者习惯使用Lazy Loading的方式创建对象，因为这样逻辑层次很清晰，但是我个人觉得对比这种GCC的写法，同样具有逻辑层次，这种“({})”包裹起来的方式可以让我们的肉眼很容易捕捉这段代码的主体，而且使用这种Lazy Loading创建的对象形式前提是你使用getter，而一些临时变量是没有getter的，而且使用Lazy Loading你还需要找到对应getter方法实现的位置去看具体的设置，没有这个一目了然。还有一点就是，Lazy Loading对象主要优点是延迟加载内存，在需要被使用的时候才会被创建，增加类的灵活性，更好的控制内存。而针对一些必然会创建的对象有些大材小用，失去原本的意义了。</p>
 <h3 id="4-使用字面量语法替换等价方法">4.使用字面量语法替换等价方法</h3><p>字面量语法实际上是一种“语法糖”（syntactic sugar），以一种非常简单快捷的方式能创建对象，使我们开发者编程更高效，更愉悦。目前Objective-C支持的字面量语法的类有NSString，NSNumber, NSArray, NSDictionary。使用字面量语法的好处：</p>
 <ul>
 <li><p>使用字面量语法可以缩减源代码长度，没有多余语法成分，提高可读性；</p>
