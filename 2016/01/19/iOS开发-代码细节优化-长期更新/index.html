@@ -14,7 +14,7 @@
 <meta property="og:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人能够积极补充，共同来维护这篇文章。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f056p688dxj20vl0l2q9c.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/c858e8d4jw1f056r95ku6j20jz0e6757.jpg">
-<meta property="og:updated_time" content="2016-01-21T13:32:24.000Z">
+<meta property="og:updated_time" content="2016-02-29T10:34:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-代码细节优化(长期更新)">
 <meta name="twitter:description" content="代码细节优化是所有开发者一直关注并锻炼的能力，这也是为什么一些技术型团队坚持在做Code Review，我相信每一个专注于技术的开发者都希望自己的代码越来越有质量。写这篇文章的目的是为了记录我在开发中学习总结的一点点关于细节处理的经验，也希望看到此文的人能够积极补充，共同来维护这篇文章。">
@@ -284,7 +284,7 @@ subView.backgroundColor = <span class="comment">[UIColor whiteColor]</span>;
     [<span class="keyword">self</span><span class="variable">.view</span> addSubview:view];
     view;
 });
-</code></pre><p>第二种写法比较少见，知道的人并不多，这种写法为GCC对C的拓展，如今呗clang继承，有点像block和内联函数的结合体，它最大的好处是使代码逻辑结构层次划分得更加明显，同时对于一个无需复用小段逻辑，也免去了重量级的调用函数，而且还有一个好处是，当你想要复制粘贴这段代码时，你仅需要更改一处变量名即可，就上例而言需要更改三处变量名。在<strong>成员变量 VS Setter&amp;Getter</strong>话题我们说到许多开发者习惯使用Lazy Loading的方式创建对象，因为这样逻辑层次很清晰，但是我个人觉得对比这种GCC的写法，同样具有逻辑层次，这种“({})”包裹起来的方式可以让我们的肉眼很容易捕捉这段代码的主体，而且使用这种Lazy Loading创建的对象形式前提是你使用getter，而一些临时变量是没有getter的，而且使用Lazy Loading你还需要找到对应getter方法实现的位置去看具体的设置，没有这个一目了然。还有一点就是，Lazy Loading对象主要优点是延迟加载内存，在需要被使用的时候才会被创建，增加类的灵活性，更好的控制内存。而针对一些必然会创建的对象有些大材小用，失去原本的意义了。</p>
+</code></pre><p>第二种写法比较少见，知道的人并不多，这种写法为GCC对C的拓展，如今被clang继承，有点像block和内联函数的结合体，它最大的好处是使代码逻辑结构层次划分得更加明显，同时，对于一个无需复用的小段逻辑也免去了重量级的调用函数，而且还有一个好处是，当你想要复制粘贴这段代码时，你仅需要更改一处变量名即可，就上例而言原来的写法需要更改三处变量名。在<strong>成员变量 VS Setter&amp;Getter</strong>话题我们说到许多开发者习惯使用Lazy Loading的方式创建对象，因为这样逻辑层次很清晰，但是我个人觉得对比这种GCC的写法，同样具有逻辑层次，这种“({})”包裹起来的方式可以让我们的肉眼很容易捕捉这段代码的主体，使用Lazy Loading创建的对象形式前提是你使用getter，而一些临时变量是没有getter的，而且使用Lazy Loading你还需要找到对应getter方法实现的位置去看具体的设置，没有这个一目了然。还有一点就是，Lazy Loading对象主要优点是延迟加载内存，在需要被使用的时候才会被创建，增加类的灵活性，更好的控制内存。而针对一些必然会创建的对象有些大材小用，失去原本的意义了。</p>
 <h3 id="4-使用字面量语法替换等价方法">4.使用字面量语法替换等价方法</h3><p>字面量语法实际上是一种“语法糖”（syntactic sugar），以一种非常简单快捷的方式能创建对象，使我们开发者编程更高效，更愉悦。目前Objective-C支持的字面量语法的类有NSString，NSNumber, NSArray, NSDictionary。使用字面量语法的好处：</p>
 <ul>
 <li><p>使用字面量语法可以缩减源代码长度，没有多余语法成分，提高可读性；</p>
