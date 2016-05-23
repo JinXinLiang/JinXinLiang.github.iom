@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://JinXinLiang.github.io/2016/05/23/EATheme/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="之前写了关于夜间模式的类库JXLDayAndNightMode,对于更多的主题切换此类库不适用，于是有感而发，封装了拓展和灵活性更强的EATheme，具体适用方法如下：">
-<meta property="og:updated_time" content="2016-05-23T03:43:29.000Z">
+<meta property="og:updated_time" content="2016-05-23T05:52:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS App主题切换－EATheme">
 <meta name="twitter:description" content="之前写了关于夜间模式的类库JXLDayAndNightMode,对于更多的主题切换此类库不适用，于是有感而发，封装了拓展和灵活性更强的EATheme，具体适用方法如下：">
@@ -218,7 +218,7 @@ var _hmt = _hmt || [];
       
         <p>之前写了关于夜间模式的类库<a href="https://github.com/JinXinLiang/JXLDayAndNightModeDemo" target="_blank" rel="external">JXLDayAndNightMode</a>,对于更多的主题切换此类库不适用，于是有感而发，封装了拓展和灵活性更强的EATheme，具体适用方法如下：<br><a id="more"></a><br><strong>安装方式（两种）</strong>   </p>
 <p>（1）使用CocoaPods的安装方式,在Podfile中对应的target使用:   </p>
-<pre><code><span class="title">pod</span> <span class="string">'EATheme'</span>, <span class="string">'~&gt; 1.1.1'</span> 
+<pre><code><span class="title">pod</span> <span class="string">'EATheme'</span>, <span class="string">'~&gt; 1.1.2'</span> 
 </code></pre><p>（2）直接导入类库的方式，移步GitHub,点击<a href="https://github.com/JinXinLiang/EAThemeSample" target="_blank" rel="external">EAThemeSample</a>下载，将demo中的EATheme文件夹直接引入到你的工程。</p>
 <p><strong>在项目中引入主头文件</strong></p>
 <pre><code><span class="id">#import</span> <span class="string">"EATheme.h"</span>
@@ -232,7 +232,7 @@ var _hmt = _hmt || [];
 </code></pre><p><strong>- (BOOL)application: didFinishLaunchingWithOptions:方法中配置应用程序默认主题，即正常状态下的主题：</strong></p>
 <pre><code><span class="comment">// 必须配置正常状态下的主题标示</span>
 [EAThemeManager shareManager].normalThemeIdentifier = EAThemeNormal;
-</code></pre><p><strong>在需要设置夜间模式的控件调用UIView类目中的设置方法，在Block回调中根据主题的identifier设置该视图的对应状态。</strong></p>
+</code></pre><p><strong>在需要设置夜间模式的控件调用UIView类目中的设置方法，在Block回调中根据主题的identifier设置该视图的对应状态：</strong></p>
 <pre><code><span class="built_in">UITabBarController</span> *rootViewController = (<span class="built_in">UITabBarController</span> *)<span class="keyword">self</span><span class="variable">.window</span><span class="variable">.rootViewController</span>;
 
 <span class="built_in">NSDictionary</span> *tabBarColorDic = @{EAThemeNormal : [<span class="built_in">UIColor</span> whiteColor], EAThemeBlack : [<span class="built_in">UIColor</span> blackColor], EAThemeRed : [<span class="built_in">UIColor</span> redColor], EAThemeOrange : [<span class="built_in">UIColor</span> orangeColor], EAThemeBlue : [<span class="built_in">UIColor</span> blueColor]};
@@ -247,7 +247,19 @@ var _hmt = _hmt || [];
 <pre><code><span class="comment">// 开启黑色主题</span>
 <span class="attr_selector">[[EAThemeManager shareManager]</span> <span class="tag">displayThemeContentsWithThemeIdentifier</span><span class="pseudo">:EAThemeBlack</span>]; 
 </code></pre><p><strong>可使用通知中心自定义监听改变主题事件</strong></p>
-<pre><code><span class="keyword">extern</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> EAChangeThemeNotification; <span class="comment">// 主题改变的监听事件名称</span>
+<pre><code>FOUNDATION_EXPORT <span class="built_in">NSString</span> *<span class="keyword">const</span> kEAChangeThemeNotification;
+</code></pre><p>案例：</p>
+<pre><code>- (<span class="typename">void</span>)viewDidLoad {
+    [<span class="keyword">super</span> viewDidLoad];
+    <span class="comment">// Do any additional setup after loading the view.</span>
+
+    [[NSNotificationCenter defaultCenter] <span class="string">addObserver:</span>self <span class="string">selector:</span><span class="annotation">@selector</span>(themeDidDisplay) <span class="string">name:</span>kEAChangeThemeNotification <span class="string">object:</span>nil];    
+
+}
+
+- (<span class="typename">void</span>)themeDidDisplay {
+    NSLog(@<span class="string">"current theme is %@!"</span>, [EAThemeManager shareManager].currentThemeIdentifier);
+}
 </code></pre><p><strong>注：Block内存问题:</strong>    </p>
 <p>在封装时已尽量让使用者避免内存的问题，如果只是对当前的view设置背景颜色，可以直接使用Block回调中的参数currentView,不会产生内存问题，更复杂的情况，EATheme已借引ReactiveCocoa中的内存管理的宏，方便大家使用（个人觉得这个宏真心好用）例如：</p>
 <pre><code><span class="variable">@ea_weakify</span>(<span class="keyword">self</span>);
