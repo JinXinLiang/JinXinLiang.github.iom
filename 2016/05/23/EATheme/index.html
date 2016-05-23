@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://JinXinLiang.github.io/2016/05/23/EATheme/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="之前写了关于夜间模式的类库JXLDayAndNightMode,对于更多的主题切换此类库不适用，于是有感而发，封装了拓展和灵活性更强的EATheme，具体适用方法如下：">
-<meta property="og:updated_time" content="2016-05-23T05:52:40.000Z">
+<meta property="og:updated_time" content="2016-05-23T06:09:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS App主题切换－EATheme">
 <meta name="twitter:description" content="之前写了关于夜间模式的类库JXLDayAndNightMode,对于更多的主题切换此类库不适用，于是有感而发，封装了拓展和灵活性更强的EATheme，具体适用方法如下：">
@@ -223,14 +223,14 @@ var _hmt = _hmt || [];
 <p><strong>在项目中引入主头文件</strong></p>
 <pre><code><span class="id">#import</span> <span class="string">"EATheme.h"</span>
 </code></pre><p><strong>在EAThemesConfiguration.h中自定义主题的常量字符串作为应用程序每种主题的identifier，范例：</strong></p>
-<pre><code><span class="comment">// 这里设置了5种主题的标示</span>
+<pre><code><span class="comment">// 这里设置了5种主题的标识</span>
 <span class="keyword">static</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> EAThemeNormal = <span class="string">@"EAThemeNormal"</span>;
 <span class="keyword">static</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> EAThemeBlack = <span class="string">@"EAThemeBlack"</span>;
 <span class="keyword">static</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> EAThemeRed = <span class="string">@"EAThemeRed"</span>;
 <span class="keyword">static</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> EAThemeOrange = <span class="string">@"EAThemeOrange"</span>;
 <span class="keyword">static</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> EAThemeBlue = <span class="string">@"EAThemeBlue"</span>;
 </code></pre><p><strong>- (BOOL)application: didFinishLaunchingWithOptions:方法中配置应用程序默认主题，即正常状态下的主题：</strong></p>
-<pre><code><span class="comment">// 必须配置正常状态下的主题标示</span>
+<pre><code><span class="comment">// 必须配置正常状态下的主题标识</span>
 [EAThemeManager shareManager].normalThemeIdentifier = EAThemeNormal;
 </code></pre><p><strong>在需要设置夜间模式的控件调用UIView类目中的设置方法，在Block回调中根据主题的identifier设置该视图的对应状态：</strong></p>
 <pre><code><span class="built_in">UITabBarController</span> *rootViewController = (<span class="built_in">UITabBarController</span> *)<span class="keyword">self</span><span class="variable">.window</span><span class="variable">.rootViewController</span>;
@@ -241,9 +241,9 @@ var _hmt = _hmt || [];
     <span class="built_in">UITabBar</span> *bar = (<span class="built_in">UITabBar</span> *)currentView;
     bar<span class="variable">.barTintColor</span> = tabBarColorDic[currentThemeIdentifier];
 }];
-</code></pre><p><strong>可通过EAThemeManager单例的currentThemeIdentifier属性随时获取当前的主题标示：</strong></p>
+</code></pre><p><strong>可通过EAThemeManager单例的currentThemeIdentifier属性随时获取当前的主题标识：</strong></p>
 <pre><code><span class="collection">[<span class="collection">[EAThemeManager shareManager]</span> currentThemeIdentifier]</span><span class="comment">;</span>
-</code></pre><p><strong>通过主题标示启动某个主题：</strong></p>
+</code></pre><p><strong>通过主题标识启动某个主题：</strong></p>
 <pre><code><span class="comment">// 开启黑色主题</span>
 <span class="attr_selector">[[EAThemeManager shareManager]</span> <span class="tag">displayThemeContentsWithThemeIdentifier</span><span class="pseudo">:EAThemeBlack</span>]; 
 </code></pre><p><strong>可使用通知中心自定义监听改变主题事件</strong></p>
