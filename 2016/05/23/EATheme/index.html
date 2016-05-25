@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://JinXinLiang.github.io/2016/05/23/EATheme/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="之前写了关于夜间模式的类库JXLDayAndNightMode,对于更多的主题切换此类库不适用，于是有感而发，封装了拓展和灵活性更强的EATheme，具体适用方法如下：">
-<meta property="og:updated_time" content="2016-05-23T06:09:18.000Z">
+<meta property="og:updated_time" content="2016-05-25T06:52:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS App主题切换－EATheme">
 <meta name="twitter:description" content="之前写了关于夜间模式的类库JXLDayAndNightMode,对于更多的主题切换此类库不适用，于是有感而发，封装了拓展和灵活性更强的EATheme，具体适用方法如下：">
@@ -229,7 +229,7 @@ var _hmt = _hmt || [];
 <span class="keyword">static</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> EAThemeRed = <span class="string">@"EAThemeRed"</span>;
 <span class="keyword">static</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> EAThemeOrange = <span class="string">@"EAThemeOrange"</span>;
 <span class="keyword">static</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> EAThemeBlue = <span class="string">@"EAThemeBlue"</span>;
-</code></pre><p><strong>- (BOOL)application: didFinishLaunchingWithOptions:方法中配置应用程序默认主题，即正常状态下的主题：</strong></p>
+</code></pre><p><strong>-application: didFinishLaunchingWithOptions:方法中配置应用程序默认主题，即正常状态下的主题：</strong></p>
 <pre><code><span class="comment">// 必须配置正常状态下的主题标识</span>
 [EAThemeManager shareManager].normalThemeIdentifier = EAThemeNormal;
 </code></pre><p><strong>在需要设置夜间模式的控件调用UIView类目中的设置方法，在Block回调中根据主题的identifier设置该视图的对应状态：</strong></p>
