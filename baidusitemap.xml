@@ -4,6 +4,25 @@
 
     
   <url>
+    <loc>http://JinXinLiang.github.io/2015/11/16/Quartz2D1/</loc>
+    <lastmod>2016-05-30T06:40:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS开发-Quartz 2D基础篇</title>
+        <pubTime>2015-11-16T06:42:54.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>绘图</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://JinXinLiang.github.io/2016/05/23/EATheme/</loc>
     <lastmod>2016-05-27T15:36:46.000Z</lastmod>
     <data>
@@ -111,25 +130,6 @@
         <tag>Socket</tag>
          
         <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://JinXinLiang.github.io/2015/11/16/iOS%E5%BC%80%E5%8F%91-Quartz%202D(%E4%B8%80)/</loc>
-    <lastmod>2015-12-02T06:41:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>iOS开发-Quartz 2D(一)</title>
-        <pubTime>2015-11-16T06:42:54.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>绘图</tag>
          
          
            

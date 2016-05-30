@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="baidu-site-verification" content="iNxYuXXbRQ" />
+  <meta charset="utf-8">
+  
+  <title>iOS开发-Quartz 2D基础篇 | Eiwodetianna</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发-Quartz 2D基础篇">
+<meta property="og:url" content="http://JinXinLiang.github.io/2015/11/16/Quartz2D1/index.html">
+<meta property="og:site_name" content="Eiwodetianna">
+<meta property="og:description" content="Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4creypi7qj209309zwfb.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/c858e8d4jw1f4d6iaqaw3j20ku0e2aat.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de0j4gfwg20a0046tbk.gif">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de374d34g20a0046ady.gif">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4de5bpnx9g20a004679v.gif">
+<meta property="og:updated_time" content="2016-05-30T06:40:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发-Quartz 2D基础篇">
+<meta name="twitter:description" content="Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。">
+  
+    <link rel="alternative" href="/atom.xml" title="Eiwodetianna" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5be49c2ef18df2308b0f31024ca65224";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/assets/blogImg/eiwodetianna.JPG" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Eiwodetianna.</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">C&#39;est la vie. Jin XinLiang</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/JinXinLiang" title="github">github</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100006692568564" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/Eiwodetianna" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/APP-Store/" style="font-size: 10px;">APP Store</a> <a href="/tags/AVFoundation/" style="font-size: 10px;">AVFoundation</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/UIWebView/" style="font-size: 10px;">UIWebView</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iOS问题集/" style="font-size: 10px;">iOS问题集</a> <a href="/tags/个人类库/" style="font-size: 10px;">个人类库</a> <a href="/tags/主题切换/" style="font-size: 10px;">主题切换</a> <a href="/tags/代码优化/" style="font-size: 10px;">代码优化</a> <a href="/tags/绘图/" style="font-size: 10px;">绘图</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/调试技巧/" style="font-size: 10px;">调试技巧</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">大连东软信息学院11级，就职于蓝鸥科技（大连）有限公司，担任iOS开发讲师。摄影爱好者。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Eiwodetianna.</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/assets/blogImg/eiwodetianna.JPG" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Eiwodetianna.</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">C&#39;est la vie. Jin XinLiang</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JinXinLiang" title="github">github</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100006692568564" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/Eiwodetianna" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Quartz2D1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/16/Quartz2D1/" class="article-date">
+  	<time datetime="2015-11-16T06:42:54.000Z" itemprop="datePublished">2015-11-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS开发-Quartz 2D基础篇
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。<br><a id="more"></a></p>
+<h2 id="##绘制原理">##绘制原理  </h2><p>Quartz 2D在图像绘制中使用了绘画者模型。在绘画者模型中，每个连续的绘制操作都是将一个绘制层放置于一个画布(canvas)，我们可以理解为图像的绘制即为在画布上绘画，而绘画操作的顺序同时影响着我们绘制的结果，如图：   </p>
+<p><img src="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4creypi7qj209309zwfb.jpg" alt=""></p>
+<h2 id="##图形上下文（Graphics_Context）">##图形上下文（Graphics Context）</h2><p>一个Graphics Context表示一个绘制目标。它包含完成绘制任务所需的一些绘制参数和设备相关信息。Graphics Context定义了基本的绘制属性，如颜色、裁减区域、线条宽度和字体信息、混合模式等。</p>
+<h2 id="##Quartz_2D_坐标系">##Quartz 2D 坐标系</h2><p>Quartz 2D中默认的坐标系统为：左下角为坐标系统原点(0,0)，屏幕水平方向为x轴，沿着x轴从左到右为正方向；屏幕垂直方向为y轴，沿着y轴从下到上为正方向。在实际应用中，不同的Graphics Context可能使用了不同的坐标系统，它们在Quartz 2D默认的坐标系统基础之上做了调整，来适应不同的场景。</p>
+<h2 id="##iOS中的视图绘制">##iOS中的视图绘制</h2><p>在iOS应用程序中，如果需要在屏幕上进行视图绘制，需要创建一个UIView对象，UIView是定义为在屏幕上的一块矩形区域，用于管理这块区域所呈现的内容，而在这个矩形区域内，我们可以通过重写drawRect:方法来自定义一些需要显示的内容。视图的drawRect:方法在视图显示在屏幕上及它的内容需要更新时被系统自动调用，我们手动调用是无效的，系统提供了两个方法让我们进行间接调用drawRect:来达到重绘视图的目的：</p>
+<pre><code><span class="comment">// 方法一：重新绘制这个view</span>
+- (<span class="typename">void</span>)setNeedsDisplay;
+<span class="comment">// 方法二：重新绘制view的某个区域</span>
+- (<span class="typename">void</span>)<span class="string">setNeedsDisplayInRect:</span>(CGRect)rect;
+</code></pre><h2 id="##获取Graphics_Context">##获取Graphics Context</h2><p>在调用自定义的drawRect:后，视图对象自动配置绘图环境以便代码能立即执行绘图操作。作为配置的一部分，视图对象将为当前的绘图环境创建一个Graphics Context。我们可以在drawRect:中使用代码获取这个context：</p>
+<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+</code></pre><p>这里需要注意的是，这个context的坐标系是默认原点位于左上角，y轴正方向为向下。这是因为UIKit使用的默认的坐标系统与Quartz 2D默认的坐标系统不同，在UIKit中，默认原点位于左上角，y轴正方向为向下。所以UIView通过修改Quartz的Graphics Context的CTM（ps：一种仿射矩阵，通过平移(translation)、旋转(rotation)、缩放(scale)操作可以将点从一个坐标空间映射到另外一个坐标空间）以使其与UIKit的坐标系匹配。</p>
+<h2 id="##创建与绘制路径（Path）">##创建与绘制路径（Path）</h2><p>路径我们可以理解为我们手中的画笔绘制出来的一个或者多个形状（子路径），每一个形状可以是线、圆、矩形、星形等简单的形状，也可以是一些更复杂的自定义形状。如下图显示了一些路径。左上角的直线可以是虚线；直线也可以是实线。上边中间的路径是由多条曲线组成的开放路径；右上角的同心圆填充了颜色，但没有描边；左下角的加利福尼亚州是闭合路径，由许多曲线和直线构成，且对路径进行填充和描边。<br><img src="http://ww3.sinaimg.cn/mw690/c858e8d4jw1f4d6iaqaw3j20ku0e2aat.jpg" alt=""></p>
+<ul>
+<li><p><strong>创建路径：</strong><br>路径的创建和绘制是两个独立的工作，我们可以手动创建一个路径，也可以使用一些便利的函数帮我们隐式的创建一些路径，我们获取到的Quartz Context其实默认会在内部创建一个path用来保存绘图信息。我们以构建一条直线线段路径为例：</p>
+<pre><code>- (<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect {
+
+<span class="comment">// 1.获取Quartz Context</span>
+<span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<span class="comment">// 2.开始构建路径，设置一个起点的坐标，绘制系统会追踪至该点进行绘制</span>
+<span class="comment">// 参数一：关联的绘制目标</span>
+<span class="comment">// 参数二：起点的x坐标</span>
+<span class="comment">// 参数三：起点的y坐标</span>
+<span class="built_in">CGContextMoveToPoint</span>(context, <span class="number">100</span>, <span class="number">100</span>);
+<span class="comment">// 3.将当前点与一个点（这里我们举例为（200，100））之间构建一条直线</span>
+<span class="comment">// 参数一：关联的绘制目标</span>
+<span class="comment">// 参数二：该端点的x坐标</span>
+<span class="comment">// 参数三：该端点的y坐标</span>
+<span class="built_in">CGContextAddLineToPoint</span>(context, <span class="number">200</span>, <span class="number">100</span>);
+
+}
+</code></pre><p>让我们共同分析一下上面的代码:<br>第一步，我们在drawRect:方法中获取Quartz Context；<br>第二步，我们准备开始构建路径，在构建路径时我们使用了CGContextMoveToPoint()函数来确定绘制的一个起始点，context会将该点信息存储至默认生成的path中；<br>第三步，我们使用了CGContextAddLineToPoint()函数将两点之间建立直线关系，同样context会将该点信息也存储至默认生成的path中，注意此时，我们只是构建了一个直线路径，并没有绘制，所以运行后不会有效果。<br>但是上述代码的可读性并不友好，而且在绘制路径后，系统将清空Quartz Context，我们可能想保留路径，特别是在绘制一些比较复杂场景时，我们需要反复使用，所以我们在实际开发中，通常会手动创建一个path对象，而且这个path对象通常是可变的，使用的函数为CGPathCreateMutable()，数据类型为：CGMutablePathRef，然后我们可以向该对象添加直线、弧、曲线和矩形等。Quartz提供了一个类似于操作图形上下文的CGPath的函数集合。这些路径函数直接操作CGPath对象，而不是Quartz Context。这些函数包括：</p>
+<p>  CGPathCreateMutable，取代CGContextBeginPath<br>  CGPathMoveToPoint，取代CGContextMoveToPoint<br>  CGPathAddLineToPoint，取代CGContexAddLineToPoint<br>  CGPathAddCurveToPoint，取代CGContexAddCurveToPoint<br>  CGPathAddEllipseInRect，取代CGContexAddEllipseInRect<br>  CGPathAddArc，取代CGContexAddArc<br>  CGPathAddRect，取代CGContexAddRect<br>  CGPathCloseSubpath，取代CGContexClosePath   </p>
+<p>  如果想要添加一个路径或者多个路径到Quartz Context，可以调用CGContextAddPath。路径将保留在Quartz Context中，直到Quartz绘制它。</p>
+</li>
+<li><p><strong>绘制路径：</strong><br>构建路径后我们可以给它描边(Stroke)或者填充(Fill)。<br>描边：绘制路径的边框；<br>填充：填充是绘制路径包含的区域。<br>Quartz提供了关于描边和填充的函数，我们可以设置描边线的属性，如宽度、颜色等，也可以设置填充的颜色以及填充的方式。   </p>
+</li>
+</ul>
+<h2 id="##基本图形绘制">##基本图形绘制</h2><ul>
+<li><p><strong>线段绘制：</strong><br>一条最基本的直线线段需要两个端点，一个起始点一个结束点，下面的代码案例绘制了一条P1(100, 100) 至P2(200, 100)之间的直线线段；  </p>
+<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<span class="built_in">CGMutablePathRef</span> linePath = <span class="built_in">CGPathCreateMutable</span>();
+<span class="comment">// 设置一个起点的坐标，绘制系统会追踪至该点进行绘制</span>
+<span class="built_in">CGPathMoveToPoint</span>(linePath, <span class="literal">NULL</span>, <span class="number">100</span>, <span class="number">100</span>);
+<span class="comment">// 将当前点与一个点（这里我们举例为（200，100））之间构建一条直线</span>
+<span class="built_in">CGPathAddLineToPoint</span>(linePath, <span class="literal">NULL</span>, <span class="number">200</span>, <span class="number">100</span>);
+<span class="built_in">CGContextAddPath</span>(context, linePath);
+<span class="comment">// 设置描边的颜色（两种方式）</span>
+<span class="comment">// 方法一：</span>
+<span class="comment">// CGContextSetRGBStrokeColor(context, 211.f / 255.f, 106.f / 255.f, 119.f / 255.f, 1.0);</span>
+<span class="comment">// 方法二：</span>
+[[<span class="built_in">UIColor</span> redColor] setStroke];
+<span class="comment">// 设置描边的宽度</span>
+<span class="built_in">CGContextSetLineWidth</span>(context, <span class="number">10</span>);
+<span class="comment">// 绘制路径－仅描边</span>
+<span class="built_in">CGContextStrokePath</span>(context);
+<span class="comment">// 注意内存管理</span>
+<span class="built_in">CGPathRelease</span>(linePath);
+</code></pre></li>
+<li><p><strong>多条连续线段绘制：</strong><br>如果绘制多个且连续的线段，只需多次调用CGPathAddLineToPoint()函数连接更多的点即可，当然也有更便利的方式提供给我们:   </p>
+<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<span class="built_in">CGMutablePathRef</span> linesPath = <span class="built_in">CGPathCreateMutable</span>();
+<span class="built_in">CGPoint</span> pointArray[] = {<span class="built_in">CGPointMake</span>(<span class="number">100</span>, <span class="number">100</span>), <span class="built_in">CGPointMake</span>(<span class="number">200</span>, <span class="number">100</span>), <span class="built_in">CGPointMake</span>(<span class="number">200</span>, <span class="number">200</span>), <span class="built_in">CGPointMake</span>(<span class="number">100</span>, <span class="number">200</span>)};
+<span class="comment">// 通过数组绘制一条多端点的线</span>
+<span class="comment">// 参数一：关联的绘制路径</span>
+<span class="comment">// 参数二：仿射变化</span>
+<span class="comment">// 参数三：数组</span>
+<span class="comment">// 参数四：数组元素个数</span>
+<span class="built_in">CGPathAddLines</span>(linesPath, <span class="literal">NULL</span>, pointArray, <span class="keyword">sizeof</span>(pointArray) / <span class="keyword">sizeof</span>(<span class="built_in">CGPoint</span>));
+</code></pre></li>
+</ul>
+<pre><code>CGContextAddPath(context, linesPath);
+
+<span class="comment">// 设置填充的颜色</span>
+<span class="comment">// 方法一：</span>
+CGContextSetRGBFillColor(context, <span class="number">211.f</span> / <span class="number">255.f</span>, <span class="number">106.f</span> / <span class="number">255.f</span>, <span class="number">119.f</span> / <span class="number">255.f</span>, <span class="number">1.0</span>);
+<span class="comment">// 方法二：</span>
+[[UIColor redColor] setFill];
+<span class="comment">// 闭合绘制路径，会从当前点绘制至起点</span>
+CGContextClosePath(context);
+
+<span class="comment">//    CGContextStrokePath(context);</span>
+<span class="comment">// 绘制路径-仅填充</span>
+<span class="comment">//    CGContextFillPath(context);</span>
+<span class="comment">// 绘制路径-既有描边也有填充</span>
+CGContextDrawPath(context, kCGPathFillStroke);
+CGPathRelease(linesPath);
+</code></pre><ul>
+<li><p><strong>弧线绘制：</strong><br>弧指的是圆弧段。我们指定一个圆心，半径和放射角(以弧度为单位)。放射角为2*PI时，创建的是一个圆。   </p>
+<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<span class="built_in">CGMutablePathRef</span> arcPath = <span class="built_in">CGPathCreateMutable</span>();
+<span class="comment">// 绘制一条弧</span>
+<span class="comment">// 参数一：关联的绘制路径</span>
+<span class="comment">// 参数二：仿射变化</span>
+<span class="comment">// 参数三：原点的坐标x</span>
+<span class="comment">// 参数四：原点的坐标y</span>
+<span class="comment">// 参数五：半径</span>
+<span class="comment">// 参数六：起始弧度</span>
+<span class="comment">// 参数七：结束弧度</span>
+<span class="comment">// 参数八：绘制方向（0为顺时针，1为逆时针）</span>
+<span class="built_in">CGPathAddArc</span>(arcPath, <span class="literal">NULL</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">0</span>, <span class="number">135</span> * (M_PI / <span class="number">180</span>), <span class="number">1</span>);
+<span class="built_in">CGContextAddPath</span>(context, arcPath);
+<span class="built_in">CGContextStrokePath</span>(context);
+<span class="built_in">CGPathRelease</span>(arcPath);   
+</code></pre></li>
+<li><strong>贝赛尔（Bezier）曲线绘制：</strong><br>Bezier曲线是应用于二维图形的曲线。曲线由顶点和控制点组成，通过改变控制点坐标可以改变曲线的形状。<br>一次Bezier曲线是由P0至P1的连续点，描述的一条线段：<br><img src="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de0j4gfwg20a0046tbk.gif" alt="">   </li>
+</ul>
+<p>二次Bezier曲线是 P0至P1 的连续点Q0和P1至P2 的连续点Q1 组成的线段上的连续点B(t)，描述一条抛物线：<br><img src="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de374d34g20a0046ady.gif" alt="">   </p>
+<p>三次Bezier曲线：<br><img src="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4de5bpnx9g20a004679v.gif" alt="">   </p>
+<p>绘制一条三次Bezier曲线：   </p>
+<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<span class="built_in">CGMutablePathRef</span> curvePath = <span class="built_in">CGPathCreateMutable</span>();
+<span class="built_in">CGPathMoveToPoint</span>(curvePath, <span class="literal">NULL</span>, <span class="number">20</span>, <span class="number">100</span>);
+<span class="comment">// 绘制贝赛尔曲线</span>
+<span class="comment">// 参数一：关联的绘制路径</span>
+<span class="comment">// 参数二：仿射变化</span>
+<span class="comment">// 参数三：控制点1的x坐标</span>
+<span class="comment">// 参数四：控制点1的y坐标</span>
+<span class="comment">// 参数五：控制点2的x坐标</span>
+<span class="comment">// 参数六：控制点2的y坐标</span>
+<span class="comment">// 参数七：终点的x坐标</span>
+<span class="comment">// 参数八：终点的y坐标</span>
+<span class="built_in">CGPathAddCurveToPoint</span>(curvePath, <span class="literal">NULL</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">80</span>, <span class="number">100</span>, <span class="number">130</span>, <span class="number">100</span>);
+<span class="built_in">CGContextAddPath</span>(context, curvePath);
+<span class="built_in">CGContextStrokePath</span>(context);
+<span class="built_in">CGPathRelease</span>(curvePath);   
+</code></pre><p><strong>矩形绘制：</strong><br>我们可以调用CGPathAddRect或者CGContextAddRect来添加一个矩形到当前路径中，并提供一个CGRect结构体(包含矩形的原点及大小)作为参数。<br>添加到路径的矩形开始于一个move-to-point操作，结束于一个close-subpath操作，所有的移动方向都是顺时针。<br>我们也可能调用CGPathAddRects或者CGContextAddRects函数来添加一系列的矩形到当前路径，并传递一个CGRect结构体的数组。   </p>
+<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<span class="built_in">CGMutablePathRef</span> rectPath = <span class="built_in">CGPathCreateMutable</span>();
+<span class="comment">// 绘制矩形</span>
+<span class="comment">// 参数一：关联的绘制路径</span>
+<span class="comment">// 参数二：仿射变化</span>
+<span class="comment">// 参数二：绘制位置及大小</span>
+<span class="built_in">CGPathAddRect</span>(rectPath, <span class="literal">NULL</span>, <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>));
+<span class="built_in">CGContextAddPath</span>(context, rectPath);
+<span class="built_in">CGContextStrokePath</span>(context);
+<span class="built_in">CGPathRelease</span>(rectPath);
+</code></pre><p><strong>椭圆绘制：</strong><br>椭圆是一种特殊的圆。椭圆是通过定义两个焦点，在平面内所有与这两个焦点的距离之和相等的点所构成的图形。   </p>
+<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<span class="built_in">CGMutablePathRef</span> ellipsePath = <span class="built_in">CGPathCreateMutable</span>();
+<span class="comment">// 绘制椭圆</span>
+<span class="comment">// 参数一：关联的绘制路径</span>
+<span class="comment">// 参数二：仿射变化</span>
+<span class="comment">// 参数三：绘制的位置及大小</span>
+<span class="built_in">CGPathAddEllipseInRect</span>(ellipsePath, <span class="literal">NULL</span>, <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>));
+<span class="built_in">CGContextAddPath</span>(context, ellipsePath);
+[[<span class="built_in">UIColor</span> redColor] setFill];
+<span class="built_in">CGContextDrawPath</span>(context, k<span class="built_in">CGPathFillStroke</span>);
+<span class="built_in">CGPathRelease</span>(ellipsePath);
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/30/iOS开发-Socket通信/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          iOS开发-Socket通信
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/11/Mac模拟慢速网络-Network-Link-Conditioner/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mac模拟慢速网络 - Network Link Conditioner</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Quartz2D1" data-title="iOS开发-Quartz 2D基础篇" data-url="http://JinXinLiang.github.io/2015/11/16/Quartz2D1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"Eiwodetianna"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Eiwodetianna.
+    	</div>
+      		<div class="footer-right">
+          <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+      			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+            <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+      		</div>
+    	</div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
