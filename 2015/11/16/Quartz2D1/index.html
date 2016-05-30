@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de0j4gfwg20a0046tbk.gif">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de374d34g20a0046ady.gif">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4de5bpnx9g20a004679v.gif">
-<meta property="og:updated_time" content="2016-05-30T06:55:33.000Z">
+<meta property="og:updated_time" content="2016-05-30T08:39:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-Quartz 2D基础篇">
 <meta name="twitter:description" content="Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。">
@@ -226,7 +226,7 @@ var _hmt = _hmt || [];
 <p><img src="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4creypi7qj209309zwfb.jpg" alt=""></p>
 <h2 id="图形上下文（Graphics_Context）">图形上下文（Graphics Context）</h2><p>一个Graphics Context表示一个绘制目标。它包含完成绘制任务所需的一些绘制参数和设备相关信息。Graphics Context定义了基本的绘制属性，如颜色、裁减区域、线条宽度和字体信息、混合模式等。</p>
 <h2 id="Quartz_2D_坐标系">Quartz 2D 坐标系</h2><p>Quartz 2D中默认的坐标系统为：左下角为坐标系统原点(0,0)，屏幕水平方向为x轴，沿着x轴从左到右为正方向；屏幕垂直方向为y轴，沿着y轴从下到上为正方向。在实际应用中，不同的Graphics Context可能使用了不同的坐标系统，它们在Quartz 2D默认的坐标系统基础之上做了调整，来适应不同的场景。</p>
-<h2 id="iOS中的视图绘制">iOS中的视图绘制</h2><p>在iOS应用程序中，如果需要在屏幕上进行视图绘制，需要创建一个UIView对象，UIView是定义为在屏幕上的一块矩形区域，用于管理这块区域所呈现的内容，而在这个矩形区域内，我们可以通过重写drawRect:方法来自定义一些需要显示的内容。视图的drawRect:方法在视图显示在屏幕上及它的内容需要更新时被系统自动调用，我们手动调用是无效的，系统提供了两个方法让我们进行间接调用drawRect:来达到重绘视图的目的：</p>
+<h2 id="iOS中的视图绘制">iOS中的视图绘制</h2><p>在iOS应用程序中，如果需要在屏幕上进行视图绘制，需要创建一个UIView对象，UIView是定义为在屏幕上的一块矩形区域，用于管理这块区域所呈现的内容，而在这个矩形区域内，我们可以通过重写drawRect:方法来自定义一些需要显示的内容。drawRect:方法在视图显示在屏幕上及它的内容需要更新时被系统自动调用，我们手动调用是无效的，系统提供了两个方法让我们进行间接调用drawRect:来达到重绘视图的目的：</p>
 <pre><code><span class="comment">// 方法一：重新绘制这个view</span>
 - (<span class="typename">void</span>)setNeedsDisplay;
 <span class="comment">// 方法二：重新绘制view的某个区域</span>
@@ -349,30 +349,15 @@ var _hmt = _hmt || [];
 <span class="built_in">CGContextAddPath</span>(context, curvePath);
 <span class="built_in">CGContextStrokePath</span>(context);
 <span class="built_in">CGPathRelease</span>(curvePath);   
-</code></pre><p><strong>矩形绘制：</strong><br>我们可以调用CGPathAddRect或者CGContextAddRect来添加一个矩形到当前路径中，并提供一个CGRect结构体(包含矩形的原点及大小)作为参数。<br>添加到路径的矩形开始于一个move-to-point操作，结束于一个close-subpath操作，所有的移动方向都是顺时针。<br>我们也可能调用CGPathAddRects或者CGContextAddRects函数来添加一系列的矩形到当前路径，并传递一个CGRect结构体的数组。   </p>
-<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
-<span class="built_in">CGMutablePathRef</span> rectPath = <span class="built_in">CGPathCreateMutable</span>();
-<span class="comment">// 绘制矩形</span>
-<span class="comment">// 参数一：关联的绘制路径</span>
-<span class="comment">// 参数二：仿射变化</span>
-<span class="comment">// 参数二：绘制位置及大小</span>
-<span class="built_in">CGPathAddRect</span>(rectPath, <span class="literal">NULL</span>, <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>));
-<span class="built_in">CGContextAddPath</span>(context, rectPath);
-<span class="built_in">CGContextStrokePath</span>(context);
-<span class="built_in">CGPathRelease</span>(rectPath);
-</code></pre><p><strong>椭圆绘制：</strong><br>椭圆是一种特殊的圆。椭圆是通过定义两个焦点，在平面内所有与这两个焦点的距离之和相等的点所构成的图形。   </p>
-<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
-<span class="built_in">CGMutablePathRef</span> ellipsePath = <span class="built_in">CGPathCreateMutable</span>();
-<span class="comment">// 绘制椭圆</span>
-<span class="comment">// 参数一：关联的绘制路径</span>
-<span class="comment">// 参数二：仿射变化</span>
-<span class="comment">// 参数三：绘制的位置及大小</span>
-<span class="built_in">CGPathAddEllipseInRect</span>(ellipsePath, <span class="literal">NULL</span>, <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>));
-<span class="built_in">CGContextAddPath</span>(context, ellipsePath);
-[[<span class="built_in">UIColor</span> redColor] setFill];
-<span class="built_in">CGContextDrawPath</span>(context, k<span class="built_in">CGPathFillStroke</span>);
-<span class="built_in">CGPathRelease</span>(ellipsePath);
-</code></pre>
+</code></pre><ul>
+<li><p><strong>矩形绘制：</strong><br>我们可以调用CGPathAddRect或者CGContextAddRect来添加一个矩形到当前路径中，并提供一个CGRect结构体(包含矩形的原点及大小)作为参数。<br>添加到路径的矩形开始于一个move-to-point操作，结束于一个close-subpath操作，所有的移动方向都是顺时针。<br>我们也可能调用CGPathAddRects或者CGContextAddRects函数来添加一系列的矩形到当前路径，并传递一个CGRect结构体的数组。   </p>
+<p>  CGContextRef context = UIGraphicsGetCurrentContext();<br>  CGMutablePathRef rectPath = CGPathCreateMutable();<br>  // 绘制矩形<br>  // 参数一：关联的绘制路径<br>  // 参数二：仿射变化<br>  // 参数二：绘制位置及大小<br>  CGPathAddRect(rectPath, NULL, CGRectMake(100, 100, 100, 100));<br>  CGContextAddPath(context, rectPath);<br>  CGContextStrokePath(context);<br>  CGPathRelease(rectPath);</p>
+</li>
+<li><p><strong>椭圆绘制：</strong><br>椭圆是一种特殊的圆。椭圆是通过定义两个焦点，在平面内所有与这两个焦点的距离之和相等的点所构成的图形。   </p>
+<p>  CGContextRef context = UIGraphicsGetCurrentContext();<br>  CGMutablePathRef ellipsePath = CGPathCreateMutable();<br>  // 绘制椭圆<br>  // 参数一：关联的绘制路径<br>  // 参数二：仿射变化<br>  // 参数三：绘制的位置及大小<br>  CGPathAddEllipseInRect(ellipsePath, NULL, CGRectMake(100, 100, 200, 200));<br>  CGContextAddPath(context, ellipsePath);<br>  [[UIColor redColor] setFill];<br>  CGContextDrawPath(context, kCGPathFillStroke);<br>  CGPathRelease(ellipsePath);</p>
+</li>
+</ul>
+
       
     </div>
     
