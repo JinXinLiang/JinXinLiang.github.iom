@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de0j4gfwg20a0046tbk.gif">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de374d34g20a0046ady.gif">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4de5bpnx9g20a004679v.gif">
-<meta property="og:updated_time" content="2016-05-30T09:36:36.000Z">
+<meta property="og:updated_time" content="2016-05-30T09:38:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-Quartz 2D基础篇">
 <meta name="twitter:description" content="Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。">
@@ -351,7 +351,7 @@ var _hmt = _hmt || [];
 <span class="built_in">CGPathRelease</span>(curvePath);   
 </code></pre><ul>
 <li><p><strong>矩形绘制：</strong><br>我们可以调用CGPathAddRect或者CGContextAddRect来添加一个矩形到当前路径中，并提供一个CGRect结构体(包含矩形的原点及大小)作为参数。<br>添加到路径的矩形开始于一个move-to-point操作，结束于一个close-subpath操作，所有的移动方向都是顺时针。<br>我们也可能调用CGPathAddRects或者CGContextAddRects函数来添加一系列的矩形到当前路径，并传递一个CGRect结构体的数组。   </p>
-<pre><code>   <span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
 <span class="built_in">CGMutablePathRef</span> rectPath = <span class="built_in">CGPathCreateMutable</span>();
 <span class="comment">// 绘制矩形</span>
 <span class="comment">// 参数一：关联的绘制路径</span>
