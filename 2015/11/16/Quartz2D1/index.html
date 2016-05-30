@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de0j4gfwg20a0046tbk.gif">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4jw1f4de374d34g20a0046ady.gif">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4de5bpnx9g20a004679v.gif">
-<meta property="og:updated_time" content="2016-05-30T06:46:09.000Z">
+<meta property="og:updated_time" content="2016-05-30T06:49:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-Quartz 2D基础篇">
 <meta name="twitter:description" content="Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。">
@@ -222,19 +222,25 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>Quartz 2D是一个二维图形绘制引擎，支持iOS环境和Mac OS X环境。我们可以使用Quartz 2D API来实现许多功能，如基本路径的绘制、透明度、描影、绘制阴影、透明层、颜色管理、反锯齿、PDF文档生成和PDF元数据访问。<br><a id="more"></a></p>
-<h2 id="###绘制原理">###绘制原理  </h2><p>Quartz 2D在图像绘制中使用了绘画者模型。在绘画者模型中，每个连续的绘制操作都是将一个绘制层放置于一个画布(canvas)，我们可以理解为图像的绘制即为在画布上绘画，而绘画操作的顺序同时影响着我们绘制的结果，如图：   </p>
+<p>##绘制原理  </p>
+<p>Quartz 2D在图像绘制中使用了绘画者模型。在绘画者模型中，每个连续的绘制操作都是将一个绘制层放置于一个画布(canvas)，我们可以理解为图像的绘制即为在画布上绘画，而绘画操作的顺序同时影响着我们绘制的结果，如图：   </p>
 <p><img src="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4creypi7qj209309zwfb.jpg" alt=""></p>
-<h2 id="###图形上下文（Graphics_Context）">###图形上下文（Graphics Context）</h2><p>一个Graphics Context表示一个绘制目标。它包含完成绘制任务所需的一些绘制参数和设备相关信息。Graphics Context定义了基本的绘制属性，如颜色、裁减区域、线条宽度和字体信息、混合模式等。</p>
-<h2 id="###Quartz_2D_坐标系">###Quartz 2D 坐标系</h2><p>Quartz 2D中默认的坐标系统为：左下角为坐标系统原点(0,0)，屏幕水平方向为x轴，沿着x轴从左到右为正方向；屏幕垂直方向为y轴，沿着y轴从下到上为正方向。在实际应用中，不同的Graphics Context可能使用了不同的坐标系统，它们在Quartz 2D默认的坐标系统基础之上做了调整，来适应不同的场景。</p>
-<h2 id="###iOS中的视图绘制">###iOS中的视图绘制</h2><p>在iOS应用程序中，如果需要在屏幕上进行视图绘制，需要创建一个UIView对象，UIView是定义为在屏幕上的一块矩形区域，用于管理这块区域所呈现的内容，而在这个矩形区域内，我们可以通过重写drawRect:方法来自定义一些需要显示的内容。视图的drawRect:方法在视图显示在屏幕上及它的内容需要更新时被系统自动调用，我们手动调用是无效的，系统提供了两个方法让我们进行间接调用drawRect:来达到重绘视图的目的：</p>
+<p>##图形上下文（Graphics Context）</p>
+<p>一个Graphics Context表示一个绘制目标。它包含完成绘制任务所需的一些绘制参数和设备相关信息。Graphics Context定义了基本的绘制属性，如颜色、裁减区域、线条宽度和字体信息、混合模式等。</p>
+<p>##Quartz 2D 坐标系</p>
+<p>Quartz 2D中默认的坐标系统为：左下角为坐标系统原点(0,0)，屏幕水平方向为x轴，沿着x轴从左到右为正方向；屏幕垂直方向为y轴，沿着y轴从下到上为正方向。在实际应用中，不同的Graphics Context可能使用了不同的坐标系统，它们在Quartz 2D默认的坐标系统基础之上做了调整，来适应不同的场景。</p>
+<p>##iOS中的视图绘制</p>
+<p>在iOS应用程序中，如果需要在屏幕上进行视图绘制，需要创建一个UIView对象，UIView是定义为在屏幕上的一块矩形区域，用于管理这块区域所呈现的内容，而在这个矩形区域内，我们可以通过重写drawRect:方法来自定义一些需要显示的内容。视图的drawRect:方法在视图显示在屏幕上及它的内容需要更新时被系统自动调用，我们手动调用是无效的，系统提供了两个方法让我们进行间接调用drawRect:来达到重绘视图的目的：</p>
 <pre><code><span class="comment">// 方法一：重新绘制这个view</span>
 - (<span class="typename">void</span>)setNeedsDisplay;
 <span class="comment">// 方法二：重新绘制view的某个区域</span>
 - (<span class="typename">void</span>)<span class="string">setNeedsDisplayInRect:</span>(CGRect)rect;
-</code></pre><h2 id="##获取Graphics_Context">##获取Graphics Context</h2><p>在调用自定义的drawRect:后，视图对象自动配置绘图环境以便代码能立即执行绘图操作。作为配置的一部分，视图对象将为当前的绘图环境创建一个Graphics Context。我们可以在drawRect:中使用代码获取这个context：</p>
+</code></pre><p>##获取Graphics Context</p>
+<p>在调用自定义的drawRect:后，视图对象自动配置绘图环境以便代码能立即执行绘图操作。作为配置的一部分，视图对象将为当前的绘图环境创建一个Graphics Context。我们可以在drawRect:中使用代码获取这个context：</p>
 <pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
 </code></pre><p>这里需要注意的是，这个context的坐标系是默认原点位于左上角，y轴正方向为向下。这是因为UIKit使用的默认的坐标系统与Quartz 2D默认的坐标系统不同，在UIKit中，默认原点位于左上角，y轴正方向为向下。所以UIView通过修改Quartz的Graphics Context的CTM（ps：一种仿射矩阵，通过平移(translation)、旋转(rotation)、缩放(scale)操作可以将点从一个坐标空间映射到另外一个坐标空间）以使其与UIKit的坐标系匹配。</p>
-<h2 id="###创建与绘制路径（Path）">###创建与绘制路径（Path）</h2><p>路径我们可以理解为我们手中的画笔绘制出来的一个或者多个形状（子路径），每一个形状可以是线、圆、矩形、星形等简单的形状，也可以是一些更复杂的自定义形状。如下图显示了一些路径。左上角的直线可以是虚线；直线也可以是实线。上边中间的路径是由多条曲线组成的开放路径；右上角的同心圆填充了颜色，但没有描边；左下角的加利福尼亚州是闭合路径，由许多曲线和直线构成，且对路径进行填充和描边。<br><img src="http://ww3.sinaimg.cn/mw690/c858e8d4jw1f4d6iaqaw3j20ku0e2aat.jpg" alt=""></p>
+<p>##创建与绘制路径（Path）</p>
+<p>路径我们可以理解为我们手中的画笔绘制出来的一个或者多个形状（子路径），每一个形状可以是线、圆、矩形、星形等简单的形状，也可以是一些更复杂的自定义形状。如下图显示了一些路径。左上角的直线可以是虚线；直线也可以是实线。上边中间的路径是由多条曲线组成的开放路径；右上角的同心圆填充了颜色，但没有描边；左下角的加利福尼亚州是闭合路径，由许多曲线和直线构成，且对路径进行填充和描边。<br><img src="http://ww3.sinaimg.cn/mw690/c858e8d4jw1f4d6iaqaw3j20ku0e2aat.jpg" alt=""></p>
 <ul>
 <li><strong>创建路径：</strong><br>路径的创建和绘制是两个独立的工作，我们可以手动创建一个路径，也可以使用一些便利的函数帮我们隐式的创建一些路径，我们获取到的Quartz Context其实默认会在内部创建一个path用来保存绘图信息。我们以构建一条直线线段路径为例：</li>
 </ul>
@@ -255,20 +261,13 @@ var _hmt = _hmt || [];
 
 }
 </code></pre><p>让我们共同分析一下上面的代码:<br>第一步，我们在drawRect:方法中获取Quartz Context；<br>第二步，我们准备开始构建路径，在构建路径时我们使用了CGContextMoveToPoint()函数来确定绘制的一个起始点，context会将该点信息存储至默认生成的path中；<br>第三步，我们使用了CGContextAddLineToPoint()函数将两点之间建立直线关系，同样context会将该点信息也存储至默认生成的path中，注意此时，我们只是构建了一个直线路径，并没有绘制，所以运行后不会有效果。<br>但是上述代码的可读性并不友好，而且在绘制路径后，系统将清空Quartz Context，我们可能想保留路径，特别是在绘制一些比较复杂场景时，我们需要反复使用，所以我们在实际开发中，通常会手动创建一个path对象，而且这个path对象通常是可变的，使用的函数为CGPathCreateMutable()，数据类型为：CGMutablePathRef，然后我们可以向该对象添加直线、弧、曲线和矩形等。Quartz提供了一个类似于操作图形上下文的CGPath的函数集合。这些路径函数直接操作CGPath对象，而不是Quartz Context。这些函数包括：</p>
-<pre><code><span class="built_in">CGPathCreateMutable</span>，取代<span class="built_in">CGContextBeginPath</span>   
-<span class="built_in">CGPathMoveToPoint</span>，取代<span class="built_in">CGContextMoveToPoint</span>   
-<span class="built_in">CGPathAddLineToPoint</span>，取代<span class="built_in">CGContexAddLineToPoint</span>   
-<span class="built_in">CGPathAddCurveToPoint</span>，取代<span class="built_in">CGContexAddCurveToPoint</span>   
-<span class="built_in">CGPathAddEllipseInRect</span>，取代<span class="built_in">CGContexAddEllipseInRect</span>   
-<span class="built_in">CGPathAddArc</span>，取代<span class="built_in">CGContexAddArc</span>   
-<span class="built_in">CGPathAddRect</span>，取代<span class="built_in">CGContexAddRect</span>   
-<span class="built_in">CGPathCloseSubpath</span>，取代<span class="built_in">CGContexClosePath</span>   
-
-如果想要添加一个路径或者多个路径到Quartz Context，可以调用<span class="built_in">CGContextAddPath</span>。路径将保留在Quartz Context中，直到Quartz绘制它。
-</code></pre><ul>
+<p>CGPathCreateMutable，取代CGContextBeginPath<br>CGPathMoveToPoint，取代CGContextMoveToPoint<br>CGPathAddLineToPoint，取代CGContexAddLineToPoint<br>CGPathAddCurveToPoint，取代CGContexAddCurveToPoint<br>CGPathAddEllipseInRect，取代CGContexAddEllipseInRect<br>CGPathAddArc，取代CGContexAddArc<br>CGPathAddRect，取代CGContexAddRect<br>CGPathCloseSubpath，取代CGContexClosePath   </p>
+<p>如果想要添加一个路径或者多个路径到Quartz Context，可以调用CGContextAddPath。路径将保留在Quartz Context中，直到Quartz绘制它。</p>
+<ul>
 <li><strong>绘制路径：</strong><br>构建路径后我们可以给它描边(Stroke)或者填充(Fill)。<br>描边：绘制路径的边框；<br>填充：填充是绘制路径包含的区域。<br>Quartz提供了关于描边和填充的函数，我们可以设置描边线的属性，如宽度、颜色等，也可以设置填充的颜色以及填充的方式。   </li>
 </ul>
-<h2 id="###基本图形绘制">###基本图形绘制</h2><ul>
+<p>##基本图形绘制</p>
+<ul>
 <li><strong>线段绘制：</strong><br>一条最基本的直线线段需要两个端点，一个起始点一个结束点，下面的代码案例绘制了一条P1(100, 100) 至P2(200, 100)之间的直线线段；  </li>
 </ul>
 <pre><code><span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
