@@ -6,17 +6,17 @@
   
   <title>ReactiveCocoa使用教程(一):初探 | Eiwodetianna</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
+  <meta name="description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ReactiveCocoa使用教程(一):初探">
 <meta property="og:url" content="http://JinXinLiang.github.io/2016/05/30/ReactiveCocoa1/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
-<meta property="og:description" content="##前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
+<meta property="og:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4epiy7bh1j21ai0ayjyy.jpg">
-<meta property="og:updated_time" content="2016-06-01T08:19:31.000Z">
+<meta property="og:updated_time" content="2016-06-01T08:34:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactiveCocoa使用教程(一):初探">
-<meta name="twitter:description" content="##前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
+<meta name="twitter:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
   
     <link rel="alternative" href="/atom.xml" title="Eiwodetianna" type="application/atom+xml">
   
@@ -217,25 +217,23 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##前言<br>ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:<br><a id="more"></a></p>
+        <h2 id="前言">前言</h2><p>ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:<br><a id="more"></a></p>
 <ul>
 <li><a href="">ReactiveCocoa使用教程(一):初探</a>   </li>
 <li>ReactiveCocoa使用教程(二):入门</li>
 <li>ReactiveCocoa使用教程(三):进阶</li>
 <li>ReactiveCocoa使用教程(四):实战</li>
 </ul>
-<p>##本章概述  </p>
-<p>这一章我们将会对ReactiveCocoa有一个初步的了解，共同来看一下ReactiveCocoa对我们的编程方式带来了哪些改变。</p>
-<p>##使用场景   </p>
-<p>在我们开发应用程序时，会经常对事件的响应做处理，如点击按钮，请求网络，属性的变化等，针对不同的事件我们可能使用不同的处理方式，如target-action、delegate、KVO、Notification、block等，而ReactiveCocoa（以下简称RAC） 的诞生，正是解决上述问题的，它为事件定义了一套标准的接口，使我们处理响应事件更加方便，而且把要监听的事件和事件响应后的处理操作写在一起，这样也更方便我们管理。   </p>
-<p>##编程思想<br>RAC真正的强大之处在于改变了我们的编程思想，它的灵感来自于<a href="https://en.wikipedia.org/wiki/Functional_reactive_programming" target="_blank" rel="external">函数式响应式编程</a>，所以RAC也被描述为函数响应式编程（FRP）框架。   </p>
+<h2 id="本章概述">本章概述</h2><p>这一章我们将会对ReactiveCocoa有一个初步的了解，共同来看一下ReactiveCocoa对我们的编程方式带来了哪些改变。</p>
+<h2 id="使用场景">使用场景</h2><p>在我们开发应用程序时，会经常对事件的响应做处理，如点击按钮，请求网络，属性的变化等，针对不同的事件我们可能使用不同的处理方式，如target-action、delegate、KVO、Notification、block等，而ReactiveCocoa（以下简称RAC） 的诞生，正是解决上述问题的，它为事件定义了一套标准的接口，使我们处理响应事件更加方便，而且把要监听的事件和事件响应后的处理操作写在一起，这样也更方便我们管理。   </p>
+<h2 id="编程思想">编程思想</h2><p>RAC真正的强大之处在于改变了我们的编程思想，它的灵感来自于<a href="https://en.wikipedia.org/wiki/Functional_reactive_programming" target="_blank" rel="external">函数式响应式编程</a>，所以RAC也被描述为函数响应式编程（FRP）框架。   </p>
 <ul>
 <li><p>函数式编程（Functional Programming）：使用高阶函数，例如函数用其他函数作为参数。</p>
 </li>
 <li><p>响应式编程（Reactive Programming）：关注于数据流和变化传播。   </p>
 </li>
 </ul>
-<p>##RAC框架导入<br>最简单的方式是使用CocoaPods导入，在对应的target中添加：   </p>
+<h2 id="RAC框架导入">RAC框架导入</h2><p>最简单的方式是使用CocoaPods导入，在对应的target中添加：   </p>
 <pre><code><span class="title">pod</span> <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1.0'</span>   
 </code></pre><p>ps:如果你的Xcode版本是7.3之前的，请使用4.1.0之前的RAC版本，如：   </p>
 <pre><code><span class="title">pod</span> <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1.0'</span>
@@ -249,7 +247,7 @@ target <span class="string">'ReactiveCocoa_Class1028'</span> <span class="keywor
 pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.0.4-alpha-4'</span>
 
 <span class="keyword">end</span>
-</code></pre><p>##RAC的使用<br><strong>引入头文件：</strong></p>
+</code></pre><h2 id="RAC的使用">RAC的使用</h2><p><strong>引入头文件：</strong></p>
 <pre><code><span class="id">#import</span> <span class="string">"ReactiveCocoa.h"</span>
 </code></pre><p><strong>RAC初探－Target-Action：</strong>   </p>
 <p>RAC为系统的很多类拓展了功能，例如我们可能需要实时监听textField中输入的文本,我们可能这样做：   </p>
@@ -383,7 +381,8 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.0
 </code></pre><p><strong>RAC初探－元组(Tuple)：</strong>    </p>
 <p>上例中的第一种写法，我们订阅信号后block返回的是一个RACTuple类型的值，RACTuple是RAC为我们提供的一种集合数据类型，叫做元组。元组是关系数据库中的基本概念，关系是一张表，每列就是一个属性，表中的每行（即数据库中的每条记录）就是一个元组。因为alertView:clickedButtonAtIndex:方法中会有两个参数传入，第一个参数是触发代理方法的alertView，第二个参数是点击button的索引值，RAC为我们打包成一个元组对象。   </p>
 <ul>
-<li><p>元组的包装与解包：   </p>
+<li>元组的包装与解包：   </li>
+</ul>
 <pre><code><span class="comment">// 包装一个元组</span>
 RACTuple *tuple = RACTuplePack(<span class="string">@"Eiwodetianna"</span>,@<span class="number">24</span>);
 <span class="comment">// 解包一个元组(方法一)：</span>
@@ -392,9 +391,7 @@ RACTupleUnpack(<span class="built_in">NSString</span> *name,<span class="built_i
 <span class="comment">// NSString *name = tuple.first;</span>
 <span class="comment">// NSNumber *age = tuple.second;</span>
 <span class="built_in">NSLog</span>(<span class="string">@"name : %@, age : %@"</span>, name, age);   
-</code></pre></li>
-</ul>
-<p>##本章小结<br>本章我们共同探讨了ReactiveCocoa在一些传统方式处理响应事件而作出的改变，下一章节我们将会尝试着自定义一个信号，以及对一些ReactiveCocoa中基础类进行介绍。</p>
+</code></pre><h2 id="本章小结">本章小结</h2><p>本章我们共同探讨了ReactiveCocoa在一些传统方式处理响应事件而作出的改变，下一章节我们将会尝试着自定义一个信号，以及对一些ReactiveCocoa中基础类进行介绍。</p>
 <p><strong>参考:</strong>   </p>
 <p><a href="https://github.com/ReactiveCocoa/ReactiveCocoa/tree/master/Documentation/Legacy" target="_blank" rel="external">ReactiveCocoa官方文档：Objective-C</a><br><a href="https://www.raywenderlich.com/62699/reactivecocoa-tutorial-pt1" target="_blank" rel="external">ReactiveCocoa Tutorial – The Definitive Introduction: Part 1/2</a><br><a href="https://www.raywenderlich.com/62796/reactivecocoa-tutorial-pt2" target="_blank" rel="external">ReactiveCocoa Tutorial – The Definitive Introduction: Part 2/2</a></p>
 
