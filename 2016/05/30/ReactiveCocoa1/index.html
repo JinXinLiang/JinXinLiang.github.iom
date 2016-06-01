@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4epiy7bh1j21ai0ayjyy.jpg">
-<meta property="og:updated_time" content="2016-06-01T09:27:19.000Z">
+<meta property="og:updated_time" content="2016-06-01T09:29:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-ReactiveCocoa使用教程(一)：初探">
 <meta name="twitter:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
@@ -312,7 +312,7 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.0
 - (<span class="keyword">void</span>)viewDidLoad {
       [<span class="keyword">super</span> viewDidLoad];
 
-    [[<span class="keyword">self</span><span class="variable">.myTextField</span> rac_signalForControlEvents:<span class="built_in">UIControlEventEditingChanged</span>]     subscribeNext:^(<span class="keyword">id</span> x) {
+    [[<span class="keyword">self</span><span class="variable">.myTextField</span> rac_signalForControlEvents:<span class="built_in">UIControlEventEditingChanged</span>] subscribeNext:^(<span class="keyword">id</span> x) {
         <span class="built_in">UITextField</span> *textField = (<span class="built_in">UITextField</span> *)x;
         <span class="built_in">NSLog</span>(<span class="string">@"text field text : %@"</span>, textField<span class="variable">.text</span>);
     }];
@@ -325,7 +325,7 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.0
 <li>2.接受信号发出的消息。   </li>
 </ul>
 <p>我们可以在该方法中的block回调里做一些处理操作,参数中的x是信号给我们发送的值，也可以理解为我们想要获取的结果，当前案例中x代表当前触发事件的UIControl,也就是self.myTextField。在上面的代码中，block回调的x为id类型，这样代码可读性并不友好，我们在block中进行类型转换也很麻烦。幸运的是，开发人员可以肯定传入block的值是个UITextField，所以你可以直接修改参数类型，把代码更新成下面的这样的：   </p>
-<pre><code><span class="collection">[<span class="collection">[self.myTextField rac_signalForControlEvents:UIControlEventEditingChanged]</span>         subscribeNext:^<span class="list">(<span class="keyword">UITextField</span> *textField)</span> <span class="collection">{
+<pre><code><span class="collection">[<span class="collection">[self.myTextField rac_signalForControlEvents:UIControlEventEditingChanged]</span> subscribeNext:^<span class="list">(<span class="keyword">UITextField</span> *textField)</span> <span class="collection">{
         NSLog<span class="list">(@<span class="string">"text field text : %@"</span>, textField.text)</span><span class="comment">;</span>
 }</span>]</span><span class="comment">;</span>
 </code></pre><p>其实，RAC在UITextField中为我们拓展了一个叫做rac_textSignal的属性，这个属性代表一个文本信号，当我们订阅这个文本信号之后，text field的编辑内容改变时会给我们实时发送消息，消息的内容为text field上编辑的文本，所以上述代码我们可以进一步优化:</p>
@@ -356,7 +356,7 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.0
 }</span>]</span><span class="comment">;</span>
 </code></pre><p>上述代码中我们使用了RAC为我们提供的另外的一个宏，传入的第一个参数为我们想要监听的对象，第二个参数为监听该对象的哪个属性，这个宏会给我们返回一个信号，订阅这个信号后，便可以实时获取信号发送过来的label的文本属性内容。   </p>
 <p><strong>RAC初探－通知(Notification)：</strong><br>关于通知中心的使用依然很方便，而且我们不需要手动移除Observer，因为这一切RAC已经为我们做好了，例如我们监听键盘将要显示的事件，可以这样写:   </p>
-<pre><code><span class="collection">[<span class="collection">[<span class="collection">[NSNotificationCenter defaultCenter]</span>         rac_addObserverForName:UIKeyboardWillShowNotification object:nil]</span>     subscribeNext:^<span class="list">(<span class="keyword">NSNotification</span> *notification)</span> <span class="collection">{
+<pre><code><span class="collection">[<span class="collection">[<span class="collection">[NSNotificationCenter defaultCenter]</span>     rac_addObserverForName:UIKeyboardWillShowNotification object:nil]</span> subscribeNext:^<span class="list">(<span class="keyword">NSNotification</span> *notification)</span> <span class="collection">{
     NSLog<span class="list">(@<span class="string">"notification : %@"</span>, notification)</span><span class="comment">;</span>
 }</span>]</span><span class="comment">; </span>
 </code></pre><p><strong>RAC初探－手势(Gesture Recognizer)：</strong>   </p>
@@ -373,7 +373,7 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.0
 }];
 [alertView show];
 </code></pre><p>当然，也有更简单的写法:   </p>
-<pre><code>UIAlertView *alertView = [[UIAlertView alloc] <span class="string">initWithTitle:</span>@<span class="string">"RACTest"</span> <span class="string">message:</span>@<span class="string">"test"</span>     <span class="string">delegate:</span>self <span class="string">cancelButtonTitle:</span>@<span class="string">"cancel"</span> <span class="string">otherButtonTitles:</span>@<span class="string">"other"</span>, nil];
+<pre><code>UIAlertView *alertView = [[UIAlertView alloc] <span class="string">initWithTitle:</span>@<span class="string">"RACTest"</span> <span class="string">message:</span>@<span class="string">"test"</span> <span class="string">delegate:</span>self <span class="string">cancelButtonTitle:</span>@<span class="string">"cancel"</span> <span class="string">otherButtonTitles:</span>@<span class="string">"other"</span>, nil];
 [[alertView rac_buttonClickedSignal] <span class="string">subscribeNext:</span>^(NSNumber *clickedIndex) {
     NSLog(@<span class="string">"clicked index : %@"</span>, clickedIndex);
 }];
