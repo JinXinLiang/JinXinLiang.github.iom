@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4epiy7bh1j21ai0ayjyy.jpg">
-<meta property="og:updated_time" content="2016-06-01T09:23:03.000Z">
+<meta property="og:updated_time" content="2016-06-01T09:27:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-ReactiveCocoa使用教程(一)：初探">
 <meta name="twitter:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
@@ -312,7 +312,7 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.0
 - (<span class="keyword">void</span>)viewDidLoad {
       [<span class="keyword">super</span> viewDidLoad];
 
-      [[<span class="keyword">self</span><span class="variable">.myTextField</span> rac_signalForControlEvents:<span class="built_in">UIControlEventEditingChanged</span>]     subscribeNext:^(<span class="keyword">id</span> x) {
+    [[<span class="keyword">self</span><span class="variable">.myTextField</span> rac_signalForControlEvents:<span class="built_in">UIControlEventEditingChanged</span>]     subscribeNext:^(<span class="keyword">id</span> x) {
         <span class="built_in">UITextField</span> *textField = (<span class="built_in">UITextField</span> *)x;
         <span class="built_in">NSLog</span>(<span class="string">@"text field text : %@"</span>, textField<span class="variable">.text</span>);
     }];
