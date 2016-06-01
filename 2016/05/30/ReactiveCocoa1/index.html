@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="baidu-site-verification" content="iNxYuXXbRQ" />
+  <meta charset="utf-8">
+  
+  <title>ReactiveCocoa使用教程(一):初探 | Eiwodetianna</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactiveCocoa使用教程(一):初探">
+<meta property="og:url" content="http://JinXinLiang.github.io/2016/05/30/ReactiveCocoa1/index.html">
+<meta property="og:site_name" content="Eiwodetianna">
+<meta property="og:description" content="##前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4epiy7bh1j21ai0ayjyy.jpg">
+<meta property="og:updated_time" content="2016-06-01T08:19:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ReactiveCocoa使用教程(一):初探">
+<meta name="twitter:description" content="##前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
+  
+    <link rel="alternative" href="/atom.xml" title="Eiwodetianna" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5be49c2ef18df2308b0f31024ca65224";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/assets/blogImg/eiwodetianna.JPG" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Eiwodetianna.</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">C&#39;est la vie. Jin XinLiang</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/JinXinLiang" title="github">github</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100006692568564" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/Eiwodetianna" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/APP-Store/" style="font-size: 10px;">APP Store</a> <a href="/tags/AVFoundation/" style="font-size: 10px;">AVFoundation</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/ReactiveCocoa/" style="font-size: 10px;">ReactiveCocoa</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/UIWebView/" style="font-size: 10px;">UIWebView</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iOS问题集/" style="font-size: 10px;">iOS问题集</a> <a href="/tags/个人类库/" style="font-size: 10px;">个人类库</a> <a href="/tags/主题切换/" style="font-size: 10px;">主题切换</a> <a href="/tags/代码优化/" style="font-size: 10px;">代码优化</a> <a href="/tags/函数响应式编程/" style="font-size: 10px;">函数响应式编程</a> <a href="/tags/第三方框架/" style="font-size: 10px;">第三方框架</a> <a href="/tags/绘图/" style="font-size: 10px;">绘图</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/调试技巧/" style="font-size: 10px;">调试技巧</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">大连东软信息学院11级，就职于蓝鸥科技（大连）有限公司，担任iOS开发讲师。摄影爱好者。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Eiwodetianna.</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/assets/blogImg/eiwodetianna.JPG" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Eiwodetianna.</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">C&#39;est la vie. Jin XinLiang</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JinXinLiang" title="github">github</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100006692568564" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/Eiwodetianna" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-ReactiveCocoa1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/30/ReactiveCocoa1/" class="article-date">
+  	<time datetime="2016-05-30T09:02:28.000Z" itemprop="datePublished">2016-05-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ReactiveCocoa使用教程(一):初探
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactiveCocoa/">ReactiveCocoa</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数响应式编程/">函数响应式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方框架/">第三方框架</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##前言<br>ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:<br><a id="more"></a></p>
+<ul>
+<li><a href="">ReactiveCocoa使用教程(一):初探</a>   </li>
+<li>ReactiveCocoa使用教程(二):入门</li>
+<li>ReactiveCocoa使用教程(三):进阶</li>
+<li>ReactiveCocoa使用教程(四):实战</li>
+</ul>
+<p>##本章概述  </p>
+<p>这一章我们将会对ReactiveCocoa有一个初步的了解，共同来看一下ReactiveCocoa对我们的编程方式带来了哪些改变。</p>
+<p>##使用场景   </p>
+<p>在我们开发应用程序时，会经常对事件的响应做处理，如点击按钮，请求网络，属性的变化等，针对不同的事件我们可能使用不同的处理方式，如target-action、delegate、KVO、Notification、block等，而ReactiveCocoa（以下简称RAC） 的诞生，正是解决上述问题的，它为事件定义了一套标准的接口，使我们处理响应事件更加方便，而且把要监听的事件和事件响应后的处理操作写在一起，这样也更方便我们管理。   </p>
+<p>##编程思想<br>RAC真正的强大之处在于改变了我们的编程思想，它的灵感来自于<a href="https://en.wikipedia.org/wiki/Functional_reactive_programming" target="_blank" rel="external">函数式响应式编程</a>，所以RAC也被描述为函数响应式编程（FRP）框架。   </p>
+<ul>
+<li><p>函数式编程（Functional Programming）：使用高阶函数，例如函数用其他函数作为参数。</p>
+</li>
+<li><p>响应式编程（Reactive Programming）：关注于数据流和变化传播。   </p>
+</li>
+</ul>
+<p>##RAC框架导入<br>最简单的方式是使用CocoaPods导入，在对应的target中添加：   </p>
+<pre><code><span class="title">pod</span> <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1.0'</span>   
+</code></pre><p>ps:如果你的Xcode版本是7.3之前的，请使用4.1.0之前的RAC版本，如：   </p>
+<pre><code><span class="title">pod</span> <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1.0'</span>
+</code></pre><p>这里需要注意，你需要在Podfile中加入“use_frameworks!”，因为RAC中使用了Swift的代码，如果不添加，在pod install时会报一个错误：   </p>
+<pre><code>[!] Pods written <span class="keyword">in</span> Swift can only be integrated <span class="keyword">as</span> frameworks; <span class="keyword">add</span> `use_frameworks!` <span class="keyword">to</span> your Podfile <span class="keyword">or</span> target <span class="keyword">to</span> opt <span class="keyword">into</span> <span class="keyword">using</span> it. The Swift Pods being used are: ReactiveCocoa <span class="keyword">and</span> <span class="keyword">Result</span>
+</code></pre><p>所以你的Podfile文件最后看起来应该类似于这样：   </p>
+<pre><code>use_frameworks!
+
+target <span class="string">'ReactiveCocoa_Class1028'</span> <span class="keyword">do</span>
+
+pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.0.4-alpha-4'</span>
+
+<span class="keyword">end</span>
+</code></pre><p>##RAC的使用<br><strong>引入头文件：</strong></p>
+<pre><code><span class="id">#import</span> <span class="string">"ReactiveCocoa.h"</span>
+</code></pre><p><strong>RAC初探－Target-Action：</strong>   </p>
+<p>RAC为系统的很多类拓展了功能，例如我们可能需要实时监听textField中输入的文本,我们可能这样做：   </p>
+<pre><code><span class="preprocessor">#import <span class="title">&lt;UIKit/UIKit.h&gt;</span></span>
+
+<span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> : <span class="title">UIViewController</span></span>
+
+<span class="keyword">@end</span>
+
+<span class="preprocessor">#import <span class="title">"ViewController.h"</span></span>
+
+<span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span>
+
+<span class="keyword">@property</span> (<span class="keyword">weak</span>, <span class="keyword">nonatomic</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UITextField</span> *myTextField;
+
+<span class="keyword">@end</span>
+
+<span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span>
+
+- (<span class="keyword">void</span>)viewDidLoad {
+      [<span class="keyword">super</span> viewDidLoad];
+
+      [<span class="keyword">self</span><span class="variable">.myTextField</span> addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(myTextFieldChanged)         forControlEvents:<span class="built_in">UIControlEventEditingChanged</span>];
+
+}
+
+- (<span class="keyword">void</span>)myTextFieldChanged:(<span class="built_in">UITextField</span> *)textField {
+    <span class="built_in">NSLog</span>(<span class="string">@"text field text : %@"</span>, textField<span class="variable">.text</span>);
+}
+
+<span class="keyword">@end</span>
+</code></pre><p>然而现在我们使用了RAC，它为系统的很多类拓展了功能，其中UIControl的类目内容如下：   </p>
+<pre><code><span class="preprocessor">#import <span class="title">&lt;UIKit/UIKit.h&gt;</span></span>
+
+<span class="class"><span class="keyword">@class</span> <span class="title">RACSignal</span>;</span>
+
+<span class="class"><span class="keyword">@interface</span> <span class="title">UIControl</span> (<span class="title">RACSignalSupport</span>)</span>
+
+<span class="comment">/// Creates and returns a signal that sends the sender of the control event</span>
+<span class="comment">/// whenever one of the control events is triggered.</span>
+- (RACSignal *)rac_signalForControlEvents:(<span class="built_in">UIControlEvents</span>)controlEvents;
+
+<span class="keyword">@end</span>
+</code></pre><p>RAC为UIControl拓展了一个方法（RAC拓展的都以rac开头），而这个方法的返回值的数据类型是RACSignal，signal是信号的意思，我们获取到一个信号后，此时这个信号是一个冷信号，不会做任何事情，我们可以通过订阅这个信号，使其变为一个热信号，这样当事件触发，信号就会给我们发送消息，发送消息的方式是一个block回调，block里会有一个id类型的参数x作为消息的内容，所以我们可以这样写：</p>
+<pre><code><span class="preprocessor">#import <span class="title">&lt;UIKit/UIKit.h&gt;</span></span>
+
+<span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> : <span class="title">UIViewController</span></span>
+
+<span class="keyword">@end</span>
+
+
+<span class="preprocessor">#import <span class="title">"ViewController.h"</span></span>
+
+<span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span>
+
+<span class="keyword">@property</span> (<span class="keyword">weak</span>, <span class="keyword">nonatomic</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UITextField</span> *myTextField;
+
+<span class="keyword">@end</span>
+
+<span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span>
+
+- (<span class="keyword">void</span>)viewDidLoad {
+      [<span class="keyword">super</span> viewDidLoad];
+
+      [[<span class="keyword">self</span><span class="variable">.myTextField</span> rac_signalForControlEvents:<span class="built_in">UIControlEventEditingChanged</span>]     subscribeNext:^(<span class="keyword">id</span> x) {
+        <span class="built_in">UITextField</span> *textField = (<span class="built_in">UITextField</span> *)x;
+        <span class="built_in">NSLog</span>(<span class="string">@"text field text : %@"</span>, textField<span class="variable">.text</span>);
+    }];
+}
+
+<span class="keyword">@end</span>
+</code></pre><p>上述代码案例我们通过调用rac_signalForControlEvents:方法来获取一个信号，然后使用这个信号调用了subscribeNext:方法，这个subscribeNext:方法会执行两个操作：   </p>
+<ul>
+<li>1.订阅信号，使冷信号转为热信号；</li>
+<li>2.接受信号发出的消息。   </li>
+</ul>
+<p>我们可以在该方法中的block回调里做一些处理操作,参数中的x是信号给我们发送的值，也可以理解为我们想要获取的结果，当前案例中x代表当前触发事件的UIControl,也就是self.myTextField。在上面的代码中，block回调的x为id类型，这样代码可读性并不友好，我们在block中进行类型转换也很麻烦。幸运的是，开发人员可以肯定传入block的值是个UITextField，所以你可以直接修改参数类型，把代码更新成下面的这样的：   </p>
+<pre><code><span class="collection">[<span class="collection">[self.myTextField rac_signalForControlEvents:UIControlEventEditingChanged]</span>         subscribeNext:^<span class="list">(<span class="keyword">UITextField</span> *textField)</span> <span class="collection">{
+        NSLog<span class="list">(@<span class="string">"text field text : %@"</span>, textField.text)</span><span class="comment">;</span>
+}</span>]</span><span class="comment">;</span>
+</code></pre><p>其实，RAC在UITextField中为我们拓展了一个叫做rac_textSignal的属性，这个属性代表一个文本信号，当我们订阅这个文本信号之后，text field的编辑内容改变时会给我们实时发送消息，消息的内容为text field上编辑的文本，所以上述代码我们可以进一步优化:</p>
+<pre><code><span class="collection">[self.myTextField.rac_textSignal subscribeNext:^<span class="list">(<span class="keyword">id</span> x)</span> <span class="collection">{
+    NSLog<span class="list">(@<span class="string">"text field text : %@"</span>, x)</span><span class="comment">;</span>
+}</span>]</span><span class="comment">;</span>
+</code></pre><p>此时，block中的id类型参数x为text field上的文本字符串，同理，为了阅读和使用方便我们可以直接修改类型，那么修改后得到的代码是这样的：   </p>
+<pre><code><span class="collection">[self.myTextField.rac_textSignal subscribeNext:^<span class="list">(<span class="keyword">NSString</span> *text)</span> <span class="collection">{
+    NSLog<span class="list">(@<span class="string">"text field text : %@"</span>, text)</span><span class="comment">;</span>
+}</span>]</span><span class="comment">;</span>
+</code></pre><p>下图为我们在text field中输入“abcdefg”时控制台输出的打印结果：   </p>
+<p><img src="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4epiy7bh1j21ai0ayjyy.jpg" alt="">   </p>
+<p>接下来，我们可以使用一个Label去实时的显示block回调中返回的字符串，RAC中因为大量的使用block所以特别容易引发retain cycle，但是不必担心，RAC中提供了很多很方便的宏，其中就有两个配套使用的宏，可以让我们很方便的进行内存管理，使用方式如下：</p>
+<pre><code><span class="variable">@weakify</span>(<span class="keyword">self</span>);
+[<span class="keyword">self</span>.myTextField.rac_textSignal <span class="symbol">subscribeNext:</span>^(<span class="constant">NSString </span>*text) {
+    <span class="variable">@strongify</span>(<span class="keyword">self</span>);
+    <span class="keyword">self</span>.myLabel.text = text;
+    <span class="constant">NSLog(</span>@<span class="string">"text field text : %@"</span>, text);
+}];
+</code></pre><p>这样我们的代码很清晰了，但是其实对于上述案例，RAC还提供了一个宏，可以很方便的将信号发送过来的值赋给某个对象的某个属性：</p>
+<pre><code><span class="function"><span class="title">RAC</span><span class="params">(TARGET, [KEYPATH, [NIL_VALUE]])</span></span>:
+</code></pre><p>我们在此案例中可以使用它再次优化我们的代码，最终得到的代码如下：   </p>
+<pre><code><span class="label">RAC</span>(<span class="keyword">self.myLabel, </span>text) = <span class="keyword">self.myTextField.rac_textSignal; </span>  
+</code></pre><p><strong>RAC初探－键值观察(KVO)：</strong>   </p>
+<p>在RAC中KVO的写法也变得更加的简单，例如我们可能监听self.myLabel的text属性的值，我们可以这样写：   </p>
+<pre><code><span class="collection">[RACObserve<span class="list">(<span class="keyword">self.myLabel</span>, text)</span> subscribeNext:^<span class="list">(<span class="keyword">NSString</span> *text)</span> <span class="collection">{
+    NSLog<span class="list">(@<span class="string">"label text : %@"</span>, x)</span><span class="comment">;</span>
+}</span>]</span><span class="comment">;</span>
+</code></pre><p>上述代码中我们使用了RAC为我们提供的另外的一个宏，传入的第一个参数为我们想要监听的对象，第二个参数为监听该对象的哪个属性，这个宏会给我们返回一个信号，订阅这个信号后，便可以实时获取信号发送过来的label的文本属性内容。   </p>
+<p><strong>RAC初探－通知(Notification)：</strong><br>关于通知中心的使用依然很方便，而且我们不需要手动移除Observer，因为这一切RAC已经为我们做好了，例如我们监听键盘将要显示的事件，可以这样写:   </p>
+<pre><code><span class="collection">[<span class="collection">[<span class="collection">[NSNotificationCenter defaultCenter]</span>         rac_addObserverForName:UIKeyboardWillShowNotification object:nil]</span>     subscribeNext:^<span class="list">(<span class="keyword">NSNotification</span> *notification)</span> <span class="collection">{
+    NSLog<span class="list">(@<span class="string">"notification : %@"</span>, notification)</span><span class="comment">;</span>
+}</span>]</span><span class="comment">; </span>
+</code></pre><p><strong>RAC初探－手势(Gesture Recognizer)：</strong>   </p>
+<p>如果我们想给self.view添加一个轻拍手势，那么我们可以这样写:   </p>
+<pre><code><span class="built_in">UITapGestureRecognizer</span> *tap = [[<span class="built_in">UITapGestureRecognizer</span> alloc] init];
+[tap<span class="variable">.rac_gestureSignal</span> subscribeNext:^(<span class="built_in">UITapGestureRecognizer</span> *tap) {
+    <span class="built_in">NSLog</span>(<span class="string">@"tap : %@"</span>, tap);
+}];
+[<span class="keyword">self</span><span class="variable">.view</span> addGestureRecognizer:tap];   
+</code></pre><p><strong>RAC初探－代理(Delegate)：</strong><br>用RAC写代理是有局限的，它只能实现返回值为void的代理方法，但已足以简化我们的代码，例如:</p>
+<pre><code>UIAlertView *alertView = [[UIAlertView alloc] <span class="string">initWithTitle:</span>@<span class="string">"RACTest"</span> <span class="string">message:</span>@<span class="string">"test"</span>     <span class="string">delegate:</span>self <span class="string">cancelButtonTitle:</span>@<span class="string">"cancel"</span> <span class="string">otherButtonTitles:</span>@<span class="string">"other"</span>, nil];
+[[self <span class="string">rac_signalForSelector:</span><span class="annotation">@selector</span>(<span class="string">alertView:</span><span class="string">clickedButtonAtIndex:</span>)     <span class="string">fromProtocol:</span><span class="annotation">@protocol</span>(UIAlertViewDelegate)] <span class="string">subscribeNext:</span>^(RACTuple *tuple) {
+    NSLog(@<span class="string">"first : %@, second : %@"</span>,tuple.first, tuple.second);
+}];
+[alertView show];
+</code></pre><p>当然，也有更简单的写法:   </p>
+<pre><code>UIAlertView *alertView = [[UIAlertView alloc] <span class="string">initWithTitle:</span>@<span class="string">"RACTest"</span> <span class="string">message:</span>@<span class="string">"test"</span>     <span class="string">delegate:</span>self <span class="string">cancelButtonTitle:</span>@<span class="string">"cancel"</span> <span class="string">otherButtonTitles:</span>@<span class="string">"other"</span>, nil];
+[[alertView rac_buttonClickedSignal] <span class="string">subscribeNext:</span>^(NSNumber *clickedIndex) {
+    NSLog(@<span class="string">"clicked index : %@"</span>, clickedIndex);
+}];
+[alertView show];   
+</code></pre><p><strong>RAC初探－元组(Tuple)：</strong>    </p>
+<p>上例中的第一种写法，我们订阅信号后block返回的是一个RACTuple类型的值，RACTuple是RAC为我们提供的一种集合数据类型，叫做元组。元组是关系数据库中的基本概念，关系是一张表，每列就是一个属性，表中的每行（即数据库中的每条记录）就是一个元组。因为alertView:clickedButtonAtIndex:方法中会有两个参数传入，第一个参数是触发代理方法的alertView，第二个参数是点击button的索引值，RAC为我们打包成一个元组对象。   </p>
+<ul>
+<li><p>元组的包装与解包：   </p>
+<pre><code><span class="comment">// 包装一个元组</span>
+RACTuple *tuple = RACTuplePack(<span class="string">@"Eiwodetianna"</span>,@<span class="number">24</span>);
+<span class="comment">// 解包一个元组(方法一)：</span>
+RACTupleUnpack(<span class="built_in">NSString</span> *name,<span class="built_in">NSNumber</span> *age) = tuple;
+<span class="comment">// 解包一个元组(方法二)：</span>
+<span class="comment">// NSString *name = tuple.first;</span>
+<span class="comment">// NSNumber *age = tuple.second;</span>
+<span class="built_in">NSLog</span>(<span class="string">@"name : %@, age : %@"</span>, name, age);   
+</code></pre></li>
+</ul>
+<p>##本章小结<br>本章我们共同探讨了ReactiveCocoa在一些传统方式处理响应事件而作出的改变，下一章节我们将会尝试着自定义一个信号，以及对一些ReactiveCocoa中基础类进行介绍。</p>
+<p><strong>参考:</strong>   </p>
+<p><a href="https://github.com/ReactiveCocoa/ReactiveCocoa/tree/master/Documentation/Legacy" target="_blank" rel="external">ReactiveCocoa官方文档：Objective-C</a><br><a href="https://www.raywenderlich.com/62699/reactivecocoa-tutorial-pt1" target="_blank" rel="external">ReactiveCocoa Tutorial – The Definitive Introduction: Part 1/2</a><br><a href="https://www.raywenderlich.com/62796/reactivecocoa-tutorial-pt2" target="_blank" rel="external">ReactiveCocoa Tutorial – The Definitive Introduction: Part 2/2</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/23/EATheme/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS App主题切换－EATheme</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ReactiveCocoa1" data-title="ReactiveCocoa使用教程(一):初探" data-url="http://JinXinLiang.github.io/2016/05/30/ReactiveCocoa1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"Eiwodetianna"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Eiwodetianna.
+    	</div>
+      		<div class="footer-right">
+          <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+      			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+            <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+      		</div>
+    	</div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
