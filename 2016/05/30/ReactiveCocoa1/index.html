@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4epiy7bh1j21ai0ayjyy.jpg">
-<meta property="og:updated_time" content="2016-06-01T11:06:15.000Z">
+<meta property="og:updated_time" content="2016-06-01T13:54:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-ReactiveCocoa使用教程(一)：初探">
 <meta name="twitter:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
@@ -270,7 +270,7 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1
 - (<span class="keyword">void</span>)viewDidLoad {
       [<span class="keyword">super</span> viewDidLoad];
 
-      [<span class="keyword">self</span><span class="variable">.myTextField</span> addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(myTextFieldChanged:)         forControlEvents:<span class="built_in">UIControlEventEditingChanged</span>];
+      [<span class="keyword">self</span><span class="variable">.myTextField</span> addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(myTextFieldChanged:) forControlEvents:<span class="built_in">UIControlEventEditingChanged</span>];
 
 }
 
@@ -356,7 +356,7 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1
 }</span>]</span><span class="comment">;</span>
 </code></pre><p>上述代码中我们使用了RAC为我们提供的另外的一个宏，传入的第一个参数为我们想要监听的对象，第二个参数为监听该对象的哪个属性，这个宏会给我们返回一个信号，订阅这个信号后，便可以实时获取信号发送过来的label的文本属性内容。   </p>
 <p><strong>RAC初探－通知(Notification)：</strong><br>关于通知中心的使用依然很方便，而且我们不需要手动移除Observer，因为这一切RAC已经为我们做好了，例如我们监听键盘将要显示的事件，可以这样写:   </p>
-<pre><code><span class="collection">[<span class="collection">[<span class="collection">[NSNotificationCenter defaultCenter]</span>     rac_addObserverForName:UIKeyboardWillShowNotification object:nil]</span> subscribeNext:^<span class="list">(<span class="keyword">NSNotification</span> *notification)</span> <span class="collection">{
+<pre><code><span class="collection">[<span class="collection">[<span class="collection">[NSNotificationCenter defaultCenter]</span> rac_addObserverForName:UIKeyboardWillShowNotification object:nil]</span> subscribeNext:^<span class="list">(<span class="keyword">NSNotification</span> *notification)</span> <span class="collection">{
     NSLog<span class="list">(@<span class="string">"notification : %@"</span>, notification)</span><span class="comment">;</span>
 }</span>]</span><span class="comment">; </span>
 </code></pre><p><strong>RAC初探－手势(Gesture)：</strong>   </p>
@@ -367,8 +367,8 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1
 }];
 [<span class="keyword">self</span><span class="variable">.view</span> addGestureRecognizer:tap];   
 </code></pre><p><strong>RAC初探－代理(Delegate)：</strong><br>用RAC写代理是有局限的，它只能实现返回值为void的代理方法，但已足以简化我们的代码，例如:</p>
-<pre><code>UIAlertView *alertView = [[UIAlertView alloc] <span class="string">initWithTitle:</span>@<span class="string">"RACTest"</span> <span class="string">message:</span>@<span class="string">"test"</span>     <span class="string">delegate:</span>self <span class="string">cancelButtonTitle:</span>@<span class="string">"cancel"</span> <span class="string">otherButtonTitles:</span>@<span class="string">"other"</span>, nil];
-[[self <span class="string">rac_signalForSelector:</span><span class="annotation">@selector</span>(<span class="string">alertView:</span><span class="string">clickedButtonAtIndex:</span>)     <span class="string">fromProtocol:</span><span class="annotation">@protocol</span>(UIAlertViewDelegate)] <span class="string">subscribeNext:</span>^(RACTuple *tuple) {
+<pre><code>UIAlertView *alertView = [[UIAlertView alloc] <span class="string">initWithTitle:</span>@<span class="string">"RACTest"</span> <span class="string">message:</span>@<span class="string">"test"</span> <span class="string">delegate:</span>self <span class="string">cancelButtonTitle:</span>@<span class="string">"cancel"</span> <span class="string">otherButtonTitles:</span>@<span class="string">"other"</span>, nil];
+[[self <span class="string">rac_signalForSelector:</span><span class="annotation">@selector</span>(<span class="string">alertView:</span><span class="string">clickedButtonAtIndex:</span>) <span class="string">fromProtocol:</span><span class="annotation">@protocol</span>(UIAlertViewDelegate)] <span class="string">subscribeNext:</span>^(RACTuple *tuple) {
     NSLog(@<span class="string">"first : %@, second : %@"</span>,tuple.first, tuple.second);
 }];
 [alertView show];
