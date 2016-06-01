@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4epiy7bh1j21ai0ayjyy.jpg">
-<meta property="og:updated_time" content="2016-06-01T10:39:35.000Z">
+<meta property="og:updated_time" content="2016-06-01T11:01:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-ReactiveCocoa使用教程(一)：初探">
 <meta name="twitter:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
@@ -359,7 +359,7 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1
 <pre><code><span class="collection">[<span class="collection">[<span class="collection">[NSNotificationCenter defaultCenter]</span>     rac_addObserverForName:UIKeyboardWillShowNotification object:nil]</span> subscribeNext:^<span class="list">(<span class="keyword">NSNotification</span> *notification)</span> <span class="collection">{
     NSLog<span class="list">(@<span class="string">"notification : %@"</span>, notification)</span><span class="comment">;</span>
 }</span>]</span><span class="comment">; </span>
-</code></pre><p><strong>RAC初探－手势(Gesture Recognizer)：</strong>   </p>
+</code></pre><p><strong>RAC初探－手势(Gesture)：</strong>   </p>
 <p>如果我们想给self.view添加一个轻拍手势，那么我们可以这样写:   </p>
 <pre><code><span class="built_in">UITapGestureRecognizer</span> *tap = [[<span class="built_in">UITapGestureRecognizer</span> alloc] init];
 [tap<span class="variable">.rac_gestureSignal</span> subscribeNext:^(<span class="built_in">UITapGestureRecognizer</span> *tap) {
