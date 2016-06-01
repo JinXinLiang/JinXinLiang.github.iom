@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4epiy7bh1j21ai0ayjyy.jpg">
-<meta property="og:updated_time" content="2016-06-01T13:54:51.000Z">
+<meta property="og:updated_time" content="2016-06-01T14:08:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-ReactiveCocoa使用教程(一)：初探">
 <meta name="twitter:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
@@ -345,9 +345,7 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1
     <span class="keyword">self</span>.myLabel.text = text;
     <span class="constant">NSLog(</span>@<span class="string">"text field text : %@"</span>, text);
 }];
-</code></pre><p>这样我们的代码很清晰了，但是其实对于上述案例，RAC还提供了一个宏，可以很方便的将信号发送过来的值赋给某个对象的某个属性：</p>
-<pre><code><span class="function"><span class="title">RAC</span><span class="params">(TARGET, [KEYPATH, [NIL_VALUE]])</span></span>:
-</code></pre><p>我们在此案例中可以使用它再次优化我们的代码，最终得到的代码如下：   </p>
+</code></pre><p>这样我们的代码很清晰了，但是其实对于上述案例，RAC还提供了一个宏，可以很方便的将信号发送过来的值赋给某个对象的某个属性, 我们在此案例中可以使用它再次优化我们的代码，最终得到的代码如下：   </p>
 <pre><code><span class="label">RAC</span>(<span class="keyword">self.myLabel, </span>text) = <span class="keyword">self.myTextField.rac_textSignal; </span>  
 </code></pre><p><strong>RAC初探－键值观察(KVO)：</strong>   </p>
 <p>在RAC中KVO的写法也变得更加的简单，例如我们可能监听self.myLabel的text属性的值，我们可以这样写：   </p>
