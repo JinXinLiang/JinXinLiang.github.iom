@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Eiwodetianna">
 <meta property="og:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/c858e8d4jw1f4epiy7bh1j21ai0ayjyy.jpg">
-<meta property="og:updated_time" content="2016-06-01T14:08:02.000Z">
+<meta property="og:updated_time" content="2016-07-25T13:42:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-ReactiveCocoa使用教程(一)：初探">
 <meta name="twitter:description" content="前言ReactiveCocoa (RAC)是一个来自于Cocoa的框架，它开辟了Objective-C编程的新纪元。本文将会分为四个章节对ReactiveCocoa框架的使用进行介绍:">
@@ -386,9 +386,9 @@ pod <span class="string">'ReactiveCocoa'</span>, <span class="string">'~&gt; 4.1
 <li>元组的包装与解包：   </li>
 </ul>
 <pre><code><span class="comment">// 包装一个元组</span>
-RACTuple *tuple = RACTuplePack(<span class="string">@"Eiwodetianna"</span>,@<span class="number">24</span>);
+RACTuple *tuple = RACTuplePack(<span class="string">@"Eiwodetianna"</span>, @<span class="number">24</span>);
 <span class="comment">// 解包一个元组(方法一)：</span>
-RACTupleUnpack(<span class="built_in">NSString</span> *name,<span class="built_in">NSNumber</span> *age) = tuple;
+RACTupleUnpack(<span class="built_in">NSString</span> *name, <span class="built_in">NSNumber</span> *age) = tuple;
 <span class="comment">// 解包一个元组(方法二)：</span>
 <span class="comment">// NSString *name = tuple.first;</span>
 <span class="comment">// NSNumber *age = tuple.second;</span>
