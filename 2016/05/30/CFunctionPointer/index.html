@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/thumbnail/c858e8d4jw1f662wcqra7j202r035745.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/thumbnail/c858e8d4jw1f663djayovj20b808mdgj.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/thumbnail/c858e8d4jw1f663dxb05zj20ao072aaj.jpg">
-<meta property="og:updated_time" content="2016-07-25T13:35:41.000Z">
+<meta property="og:updated_time" content="2016-07-25T13:37:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言—函数指针（Function pointer）">
 <meta name="twitter:description" content="前言初学C语言的童鞋，通常在学完函数和指针的知识后，已经是懵懵哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。">
@@ -311,30 +311,30 @@ p(<span class="number">20</span>, <span class="number">45</span>);
 <li>…    </li>
 </ol>
 <p>这种无法预测的需求变更，就是我们上文说的动态场景，那么解决方案就是函数回调：   </p>
-<pre><code>typedef struct student{
+<pre><code><span class="keyword">typedef</span> <span class="keyword">struct</span> student{
     <span class="keyword">char</span> name[<span class="number">20</span>];
     <span class="keyword">int</span> age;
     <span class="keyword">float</span> score;
 }Student;
 
 <span class="comment">//比较两个学生的年龄</span>
-<span class="keyword">BOOL</span> compareByAge(Student stu1, Student stu2) {
-    <span class="keyword">return</span> stu1.age &gt; stu2.age ? YES : NO;
+<span class="built_in">BOOL</span> compareByAge(Student stu1, Student stu2) {
+    <span class="keyword">return</span> stu1<span class="variable">.age</span> &gt; stu2<span class="variable">.age</span> ? <span class="literal">YES</span> : <span class="literal">NO</span>;
 }
 <span class="comment">//比较两个学生的成绩</span>
-<span class="keyword">BOOL</span> compareByScore(Student stu1, Student stu2) {
-    <span class="keyword">return</span> stu1.score &gt; stu2.score ? YES : NO;
+<span class="built_in">BOOL</span> compareByScore(Student stu1, Student stu2) {
+    <span class="keyword">return</span> stu1<span class="variable">.score</span> &gt; stu2<span class="variable">.score</span> ? <span class="literal">YES</span> : <span class="literal">NO</span>;
 }
-void sortStudents(Student *<span class="keyword">array</span>, <span class="keyword">int</span> n, <span class="keyword">BOOL</span>(*p)(Student, Student)) {
+<span class="keyword">void</span> sortStudents(Student *array, <span class="keyword">int</span> n, <span class="built_in">BOOL</span>(*p)(Student, Student)) {
     Student temp;
     <span class="keyword">int</span> flag = <span class="number">0</span>;
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span> &amp;&amp; flag == <span class="number">0</span>; i++) {
         flag = <span class="number">1</span>;
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++) {
-            <span class="keyword">if</span> (p(<span class="keyword">array</span>[j], <span class="keyword">array</span>[j + <span class="number">1</span>])) {
-                temp = <span class="keyword">array</span>[j];
-                <span class="keyword">array</span>[j] = <span class="keyword">array</span>[j + <span class="number">1</span>];
-                <span class="keyword">array</span>[j + <span class="number">1</span>] = temp;
+            <span class="keyword">if</span> (p(array[j], array[j + <span class="number">1</span>])) {
+                temp = array[j];
+                array[j] = array[j + <span class="number">1</span>];
+                array[j + <span class="number">1</span>] = temp;
                 flag = <span class="number">0</span>;
             }
         }
@@ -346,7 +346,7 @@ void sortStudents(Student *<span class="keyword">array</span>, <span class="keyw
     Student stu2 = {<span class="string">"小红"</span>, <span class="number">20</span>, <span class="number">78</span>};
     Student stu3 = {<span class="string">"小白"</span>, <span class="number">21</span>, <span class="number">88</span>};
     Student stuArray[<span class="number">3</span>] = {stu1, stu2, stu3};
-    sortStudents(<span class="keyword">array</span>, <span class="number">3</span>, compareByScore);
+    sortStudents(stuArray, <span class="number">3</span>, compareByScore);
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }
