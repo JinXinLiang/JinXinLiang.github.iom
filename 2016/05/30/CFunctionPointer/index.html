@@ -6,12 +6,12 @@
   
   <title>C语言—函数指针（Function pointer） | Eiwodetianna</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言初学C语言的童鞋，通常在学完函数和指针的知识后，已经是萌萌哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。">
+  <meta name="description" content="前言初学C语言的童鞋，通常在学完函数和指针的知识后，已经是懵懵哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言—函数指针（Function pointer）">
 <meta property="og:url" content="http://JinXinLiang.github.io/2016/05/30/CFunctionPointer/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
-<meta property="og:description" content="前言初学C语言的童鞋，通常在学完函数和指针的知识后，已经是萌萌哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。">
+<meta property="og:description" content="前言初学C语言的童鞋，通常在学完函数和指针的知识后，已经是懵懵哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/thumbnail/c858e8d4jw1f65i20wjw2j20jg0rpq43.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/thumbnail/c858e8d4jw1f65ijxvwrij2034025wec.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/thumbnail/c858e8d4jw1f65jli1uysj204204y3yc.jpg">
@@ -21,10 +21,10 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/thumbnail/c858e8d4jw1f662wcqra7j202r035745.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/thumbnail/c858e8d4jw1f663djayovj20b808mdgj.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/thumbnail/c858e8d4jw1f663dxb05zj20ao072aaj.jpg">
-<meta property="og:updated_time" content="2016-07-25T05:52:16.000Z">
+<meta property="og:updated_time" content="2016-07-25T08:32:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言—函数指针（Function pointer）">
-<meta name="twitter:description" content="前言初学C语言的童鞋，通常在学完函数和指针的知识后，已经是萌萌哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。">
+<meta name="twitter:description" content="前言初学C语言的童鞋，通常在学完函数和指针的知识后，已经是懵懵哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。">
   
     <link rel="alternative" href="/atom.xml" title="Eiwodetianna" type="application/atom+xml">
   
@@ -229,7 +229,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言">前言</h2><p>初学C语言的童鞋，通常在学完函数和指针的知识后，已经是萌萌哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。<br><a id="more"></a></p>
+        <h2 id="前言">前言</h2><p>初学C语言的童鞋，通常在学完函数和指针的知识后，已经是懵懵哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。<br><a id="more"></a></p>
 <h2 id="函数指针概述">函数指针概述</h2><p>首先我们需要回顾一下函数的作用：完成某一特定功能的代码块。    </p>
 <p>再来回忆一下指针的作用：一种特殊的变量，用来保存地址值，某类型的指针指向某类型的地址。   </p>
 <p>下面定义了一个求两个数最大值的函数：   </p>
