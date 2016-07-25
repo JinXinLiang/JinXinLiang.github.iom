@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/thumbnail/c858e8d4jw1f662wcqra7j202r035745.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/thumbnail/c858e8d4jw1f663djayovj20b808mdgj.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/thumbnail/c858e8d4jw1f663dxb05zj20ao072aaj.jpg">
-<meta property="og:updated_time" content="2016-07-25T08:48:28.000Z">
+<meta property="og:updated_time" content="2016-07-25T08:50:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言—函数指针（Function pointer）">
 <meta name="twitter:description" content="前言初学C语言的童鞋，通常在学完函数和指针的知识后，已经是懵懵哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。">
@@ -264,11 +264,11 @@ p(<span class="number">20</span>, <span class="number">45</span>);
 }
 <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{
 
-<span class="keyword">int</span> numberArray[<span class="number">5</span>] = {<span class="number">15</span>, <span class="number">34</span>, <span class="number">44</span>, <span class="number">56</span>, <span class="number">64</span>};
-<span class="keyword">int</span> compareNumber = <span class="number">50</span>;
-compareNumberFunction(numberArray, <span class="number">5</span>, compareNumber);
+    <span class="keyword">int</span> numberArray[<span class="number">5</span>] = {<span class="number">15</span>, <span class="number">34</span>, <span class="number">44</span>, <span class="number">56</span>, <span class="number">64</span>};
+    <span class="keyword">int</span> compareNumber = <span class="number">50</span>;
+    compareNumberFunction(numberArray, <span class="number">5</span>, compareNumber);
 
-<span class="keyword">return</span> <span class="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }   
 </code></pre><p>这样实现是没有问题的，然而现在我们又有这样一个需求：实现一个函数，将一个整形数组中比50小的打印在控制台。”What the fuck!”对于提需求者，你可能此时的心情是这样：   </p>
 <p><img src="http://ww4.sinaimg.cn/thumbnail/c858e8d4jw1f65ijxvwrij2034025wec.jpg" alt="">   </p>
