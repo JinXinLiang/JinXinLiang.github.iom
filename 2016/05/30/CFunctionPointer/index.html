@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/thumbnail/c858e8d4jw1f662wcqra7j202r035745.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/thumbnail/c858e8d4jw1f663djayovj20b808mdgj.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/thumbnail/c858e8d4jw1f663dxb05zj20ao072aaj.jpg">
-<meta property="og:updated_time" content="2016-07-25T08:32:03.000Z">
+<meta property="og:updated_time" content="2016-07-25T08:35:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言—函数指针（Function pointer）">
 <meta name="twitter:description" content="前言初学C语言的童鞋，通常在学完函数和指针的知识后，已经是懵懵哒，学习到了函数指针（请注意不是函数和指针），更是整个人都不好了，不过首先，请不要一言不和就砸电脑，因为它很贵（土豪随意），这篇文章的目的，就是帮助我的童鞋们理解函数指针。">
@@ -270,7 +270,7 @@ compareNumberFunction(numberArray, <span class="number">5</span>, compareNumber)
 
 <span class="keyword">return</span> <span class="number">0</span>;
 }   
-</code></pre><p>这样实现是没有问题的，然而现在我们又有这样一个需求：实现一个函数，将一个整形数组中比50大的打印在控制台。”What the fuck!”对于提需求者，你可能此时的心情是这样：   </p>
+</code></pre><p>这样实现是没有问题的，然而现在我们又有这样一个需求：实现一个函数，将一个整形数组中比50小的打印在控制台。”What the fuck!”对于提需求者，你可能此时的心情是这样：   </p>
 <p><img src="http://ww4.sinaimg.cn/thumbnail/c858e8d4jw1f65ijxvwrij2034025wec.jpg" alt="">   </p>
 <p>然而回到现实，这种需求是不可避免的，你可能想过复制粘贴，更改一下判断条件，然而作为开发者，我们要未雨绸缪，要考虑到将来可能添加更多类似的需求，那么你将会有大量的重复代码，使你的项目变得臃肿，所以这个时候我们需要冷静下来思考，其实这两个需求很多代码都是相同的，只要更改一下判断条件即可，而判断条件我们如何变得更加灵活呢？这时候我们就用到回调函数的知识了，我们可以定义一个函数，这个函数需要两个int型参数，函数内部实现代码是将两个整形数字做比较，将比较结果的bool值作为函数的返回值返回出来，以大于被比较数字的情况为例：   </p>
 <pre><code>BOOL compareGreater(<span class="built_in">int</span> <span class="built_in">number</span>, <span class="built_in">int</span> compareNumber) {
