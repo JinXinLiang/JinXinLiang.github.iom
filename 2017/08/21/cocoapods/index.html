@@ -4,18 +4,32 @@
   <meta name="baidu-site-verification" content="iNxYuXXbRQ" />
   <meta charset="utf-8">
   
-  <title>iOS开发 - 耳机状态监控 | Eiwodetianna</title>
+  <title>CocoaPods的使用 | Eiwodetianna</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当你的应用程序运行时，用户可以插入或拔出耳机，在写音频类APP的时候，常常会有对耳机状态监控的需求，在iOS6之后苹果公司为开发者们带了比较友好的方法：">
+  <meta name="description" content="###安装1234gem install -n /usr/local/bin cocoapods```   如果权限不够，则使用：
+sudo gem install -n /usr/local/bin cocoapods12###然后初始化Cocoapods：
+pod setup1###使用时，我们需要访问要使用Cocoapods的工程目录：
+cd 工程目录12例如：
+cd /Users/Eiwo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS开发 - 耳机状态监控">
-<meta property="og:url" content="http://JinXinLiang.github.io/2015/11/11/耳机状态监控/index.html">
+<meta property="og:title" content="CocoaPods的使用">
+<meta property="og:url" content="http://JinXinLiang.github.io/2017/08/21/cocoapods/index.html">
 <meta property="og:site_name" content="Eiwodetianna">
-<meta property="og:description" content="当你的应用程序运行时，用户可以插入或拔出耳机，在写音频类APP的时候，常常会有对耳机状态监控的需求，在iOS6之后苹果公司为开发者们带了比较友好的方法：">
-<meta property="og:updated_time" content="2015-11-11T16:56:28.000Z">
+<meta property="og:description" content="###安装1234gem install -n /usr/local/bin cocoapods```   如果权限不够，则使用：
+sudo gem install -n /usr/local/bin cocoapods12###然后初始化Cocoapods：
+pod setup1###使用时，我们需要访问要使用Cocoapods的工程目录：
+cd 工程目录12例如：
+cd /Users/Eiwo">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4ly1firb6qc11yj208d07v0sx.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/c858e8d4ly1firb7m4b9wj207a059wed.jpg">
+<meta property="og:updated_time" content="2017-08-21T06:10:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS开发 - 耳机状态监控">
-<meta name="twitter:description" content="当你的应用程序运行时，用户可以插入或拔出耳机，在写音频类APP的时候，常常会有对耳机状态监控的需求，在iOS6之后苹果公司为开发者们带了比较友好的方法：">
+<meta name="twitter:title" content="CocoaPods的使用">
+<meta name="twitter:description" content="###安装1234gem install -n /usr/local/bin cocoapods```   如果权限不够，则使用：
+sudo gem install -n /usr/local/bin cocoapods12###然后初始化Cocoapods：
+pod setup1###使用时，我们需要访问要使用Cocoapods的工程目录：
+cd 工程目录12例如：
+cd /Users/Eiwo">
   
     <link rel="alternative" href="/atom.xml" title="Eiwodetianna" type="application/atom+xml">
   
@@ -187,11 +201,11 @@ var _hmt = _hmt || [];
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-耳机状态监控" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-cocoapods" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/11/耳机状态监控/" class="article-date">
-  	<time datetime="2015-11-11T09:33:32.000Z" itemprop="datePublished">2015-11-11</time>
+      <a href="/2017/08/21/cocoapods/" class="article-date">
+  	<time datetime="2017-08-21T09:02:28.000Z" itemprop="datePublished">2017-08-21</time>
 </a>
     </div>
   
@@ -204,7 +218,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      iOS开发 - 耳机状态监控
+      CocoaPods的使用
     </h1>
   
 
@@ -213,7 +227,7 @@ var _hmt = _hmt || [];
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音频/">音频</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方框架/">第三方框架</a></li></ul>
 	</div>
 
         
@@ -224,33 +238,16 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>当你的应用程序运行时，用户可以插入或拔出耳机，在写音频类APP的时候，常常会有对耳机状态监控的需求，在iOS6之后苹果公司为开发者们带了比较友好的方法：<br><a id="more"></a><br>1.首先导入头文件：</p>
-<pre><code><span class="preprocessor">#import <span class="title">&lt;AVFoundation/AVFoundation.h&gt;</span></span>
-</code></pre><p>2.在该文件下存在监听事件名称，我们可以对该事件进行监听：</p>
-<pre><code><span class="built_in">NSString</span> *<span class="keyword">const</span> <span class="built_in">AVAudioSessionRouteChangeNotification</span> 
-</code></pre><p>3.使用通知中心设置监听：</p>
-<pre><code><span class="attr_selector">[[NSNotificationCenter defaultCenter]</span> <span class="tag">addObserver</span><span class="pseudo">:self</span> <span class="tag">selector</span>:@<span class="tag">selector</span>(<span class="attribute">outputRouteChanged</span>:) <span class="tag">name</span><span class="pseudo">:AVAudioSessionRouteChangeNotification</span> <span class="tag">object</span>:<span class="attr_selector">[AVAudioSession sharedInstance]</span>];
-</code></pre><p>4.实现监听触发事件：</p>
-<pre><code><span class="pp">- <span class="params">(void)</span>outputRouteChanged:<span class="params">(<span class="variable">NSNotification</span> *)</span>notification {
-
-    NSLog<span class="params">(@<span class="string">"---%@"</span>, notification.user<span class="variable">Info</span>)</span>;
-
-}</span>
-</code></pre><p>5.控制台打印结果为：</p>
-<pre><code><span class="special">{</span>
-    AVAudioSessionRouteChangePreviousRouteKey = "&lt;AVAudioSessionRouteDescription: 0x17420ded0, <span class="command">\ninputs</span> = (null); <span class="command">\noutputs</span> = (<span class="command">\n</span>    <span class="command">\"</span>&lt;AVAudioSessionPortDescription: 0x17420dbc0, type = Headphones; name = <span class="command">\\</span>U8033<span class="command">\\</span>U673a; UID = Wired Headphones; selectedDataSource = (null)&gt;<span class="command">\"</span><span class="command">\n</span>)&gt;";
-    AVAudioSessionRouteChangeReasonKey = 8;
-<span class="special">}</span>
-</code></pre><p>6:该AVAudioSessionRouteChangeNotification提供了两个重要的对象：</p>
-<pre><code><span class="comment">// AVAudioSessionRouteDescription：前一线路的描述。</span>
-<span class="comment">// AVAudioSessionRouteChangeReasonKey：线路改变的原因。</span>
-</code></pre><p>7:如果你只是想知道，当耳机被拔掉，你应该使用下面的代码：</p>
-<pre><code><span class="built_in">NSInteger</span> routeChangeReason =  [notification<span class="variable">.userInfo</span> [<span class="built_in">AVAudioSessionRouteChangeReasonKey</span>] integerValue]; 
-<span class="keyword">if</span>  (routeChangeReason ==  <span class="built_in">AVAudioSessionRouteChangeReasonOldDeviceUnavailable</span>) { 
-   <span class="comment">// 旧设备失效(耳机已经拔掉)</span>
-}
-</code></pre><p>友情提示：在这里我们通常不需要检测前一线路是否是耳机，因为在iOS的设计逻辑中，输出设备失效，你就应该选择暂停当前的播放，而当前正处在播放状态你插入了耳机将会获得的线路改变原因为：AVAudioSessionRouteChangeReasonNewDeviceAvailable，此时你无需暂停操作而应该继续播放，因为新的输出设备有效，有效的话就应该继续播放。   </p>
-<p>   详情请参考苹果官方文档：<a href="https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/HandlingAudioHardwareRouteChanges/HandlingAudioHardwareRouteChanges.html#//apple_ref/doc/uid/TP40007875-CH5-SW3" target="_blank" rel="external">Audio Session Programming Guide: Responding to Route Changes</a></p>
+        <p>###安装<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="operator"><span class="keyword">install</span> -<span class="keyword">n</span> /usr/<span class="keyword">local</span>/<span class="keyword">bin</span> cocoapods</span><br><span class="line"><span class="string">``</span><span class="string">`   </span><br><span class="line"></span><br><span class="line">如果权限不够，则使用：</span></span></span><br></pre></td></tr></table></figure></p>
+<p>sudo gem install -n /usr/local/bin cocoapods<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="preprocessor">###然后初始化Cocoapods：</span></span><br></pre></td></tr></table></figure></p>
+<p>pod setup<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">###使用时，我们需要访问要使用Cocoapods的工程目录：</span></span><br></pre></td></tr></table></figure></p>
+<p>cd 工程目录<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">例如：</span><br></pre></td></tr></table></figure></p>
+<p>cd /Users/Eiwodetianna/Desktop/UI12_Project<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="preprocessor">###进入工程目录后需要对该工程进行初始化，生成对应的一个叫做Podfile的文件，该文件是记录需要的第三方类库的信息的，使用命令：</span></span><br></pre></td></tr></table></figure></p>
+<p>pod init<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="preprocessor">###搜索第三方类库的命令：</span></span><br></pre></td></tr></table></figure></p>
+<p>pod search 第三方类库名称<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如,我们要在工程中使用SDWebImage：</span><br></pre></td></tr></table></figure></p>
+<p>pod search sdwebimage<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">得到如下结果：   </span><br><span class="line"></span><br><span class="line">![<span class="link_label">podSearch</span>](<span class="link_url">http://ww1.sinaimg.cn/mw690/c858e8d4ly1firayqdhqhj20hh0ctac3.jpg</span>)   </span><br><span class="line">红色框内是我们要在Podfile文件中填写的第三方类库的安装格式，直接复制粘贴到Podfile文件中：   </span><br><span class="line">![<span class="link_label">Podfile文件内容</span>](<span class="link_url">http://ww1.sinaimg.cn/mw690/c858e8d4ly1firb25qe76j20jd0e1gnq.jpg</span>)   </span><br><span class="line"><span class="header">###最后在终端使用命令进行第三方类库的下载集成安装：</span></span><br></pre></td></tr></table></figure></p>
+<p>pod install<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果网络情况不好可以将该命令替换为：</span><br></pre></td></tr></table></figure></p>
+<p>pod install –verbose –no-repo-update<br>```<br>执行该命令后原工程目录会多出一些文件，我们以后打开工程不再使用原本的.xcodeproj文件，而是使用.xworkspace工作区文件<br><img src="http://ww1.sinaimg.cn/mw690/c858e8d4ly1firb6qc11yj208d07v0sx.jpg" alt=""><br>打开工程后得到如下效果：<br><img src="http://ww1.sinaimg.cn/mw690/c858e8d4ly1firb7m4b9wj207a059wed.jpg" alt=""><br>pod工程中含有我们需要的第三方，在我们自己的工程区域中正常引用该第三方的.h文件即可（ps：#import “” 替换为 #import &lt;&gt;）</p>
 
       
     </div>
@@ -260,18 +257,9 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2015/11/11/Mac模拟慢速网络-Network-Link-Conditioner/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Mac模拟慢速网络 - Network Link Conditioner
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/10/UIWebview修改背景色为透明的方法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS开发 - UIWebView修改背景色为透明的方法</div>
+    <a href="/2016/05/30/CFunctionPointer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C语言—函数指针（Function pointer）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -300,7 +288,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="耳机状态监控" data-title="iOS开发 - 耳机状态监控" data-url="http://JinXinLiang.github.io/2015/11/11/耳机状态监控/"></div>
+	<div class="ds-thread" data-thread-key="cocoapods" data-title="CocoaPods的使用" data-url="http://JinXinLiang.github.io/2017/08/21/cocoapods/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

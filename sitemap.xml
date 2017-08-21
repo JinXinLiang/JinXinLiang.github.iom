@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://JinXinLiang.github.io/2017/08/21/cocoapods/</loc>
+    <lastmod>2017-08-21T06:10:45.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://JinXinLiang.github.io/2016/05/30/ReactiveCocoa1/</loc>
     <lastmod>2016-07-25T13:42:19.000Z</lastmod>
   </url>
